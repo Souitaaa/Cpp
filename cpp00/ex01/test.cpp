@@ -10,10 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+`#include <iostream>
+#include <sstream>
 
 int main() {
     std::string str = "123";
-    int num = std::stoi(str);
+    int num;
+    std::stringstream(str) >> num;
     std::cout << "The integer value is: " << num << std::endl;
     return 0;
 }

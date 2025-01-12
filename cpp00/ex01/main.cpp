@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 21:15:16 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/10 23:08:08 by csouita          ###   ########.fr       */
+/*   Updated: 2025/01/12 18:35:46 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,29 +33,45 @@ int main()
     {
         std::cout << "Enter a Command " << std::endl;
         std::getline(std::cin , command);
+        if (std::cin.eof())
+            return 0;
         if(command == "EXIT")
             return 0;
-        if(command == "ADD")
+        else if(command == "ADD")
         {
             std::cout << "Enter The First Name :";
             std::getline(std::cin , FirstName);
+            if (std::cin.eof())
+                return 0;
             std::cout << "Enter The Last Name :";
             std::getline(std::cin , LastName);
+            if (std::cin.eof())
+                return 0;
             std::cout << "Enter The Nick Name :";
             std::getline(std::cin , NickName);
+            if (std::cin.eof())
+                return 0;
             std::cout << "Enter The Phone Number :";
             std::getline(std::cin , PhoneNumber);
+            if (std::cin.eof())
+                return 0;
             std::cout << "Enter The Darkest Secret :";
             std::getline(std::cin , DarkestSecret);
+            if (std::cin.eof())
+                return 0;
             PhoneBook.AddContact(FirstName , LastName , NickName , PhoneNumber , DarkestSecret);
         }
-        if(command == "SEARCH")
+        else if(command == "SEARCH")
         {
             PhoneBook.DisplayContact();
             std::string input;
             std::cout << "Enter The Index :" << std::endl;
             std::getline(std::cin , input);
+            if (std::cin.eof())
+                return 0;
             PhoneBook.DisplayContacts(input);
         }
+        else
+            std::cout << "Command Not Found" << std::endl;
     }
 }

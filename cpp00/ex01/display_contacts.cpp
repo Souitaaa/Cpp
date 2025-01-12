@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 21:24:23 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/10 21:24:24 by csouita          ###   ########.fr       */
+/*   Updated: 2025/01/12 17:41:30 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 #include <iomanip>
 #include <iostream>
 
-// ...existing code...
-
-void PhoneBook::DisplayContacts() const
+void PhoneBook::DisplayContacts()
 {
     std::cout << std::setw(10) << "Index" << "|"
               << std::setw(10) << "First Name" << "|"
@@ -31,7 +29,7 @@ void PhoneBook::DisplayContacts() const
     }
 }
 
-bool PhoneBook::DisplayContact(int index) const
+bool PhoneBook::DisplayContact(int index)
 {
     if (index < 0 || index >= contactCount)
     {
@@ -46,7 +44,7 @@ bool PhoneBook::DisplayContact(int index) const
     return true;
 }
 
-std::string PhoneBook::TruncateString(const std::string& str) const
+std::string PhoneBook::TruncateString(std::string str) 
 {
     if (str.length() > 10)
     {

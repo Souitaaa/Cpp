@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 21:30:21 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/10 23:24:28 by csouita          ###   ########.fr       */
+/*   Updated: 2025/01/12 18:22:04 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@
 
 void PhoneBook::AddContact(std::string FirstName , std::string LastName , std::string NickName , std::string PhoneNumber , std::string DarkestSecret)
 {
+    if (FirstName.empty() || LastName.empty() || NickName.empty() || PhoneNumber.empty() || DarkestSecret.empty())
+    {
+        std::cout << "All fields are required" << std::endl;
+        return;
+    }
+    if (ContactCount >= 8)
+    {
+        ContactCount = 0;
+    }
     if (ContactCount < 8)
     {
         Contacts[ContactCount].SetFirstName(FirstName);
@@ -29,10 +38,7 @@ void PhoneBook::AddContact(std::string FirstName , std::string LastName , std::s
         Contacts[ContactCount].SetPhoneNumber(PhoneNumber);
         Contacts[ContactCount].SetDarkestSecret(DarkestSecret);
         ContactCount++;        
-    }
-    else 
-        std::cout << "The Phonebook is full" << std::endl;
-    
+    } 
 }
 
 void PhoneBook::DisplayContact()
@@ -57,8 +63,6 @@ void PhoneBook::DisplayContacts(std::string index)
         std::cout << "The index is not valid" << std::endl;
         return;
     }
-    std::cout << "index is : " << index << std::endl;
-    std::cout << "The index issssssssssssssssssss : " << idx << std::endl;
     if (idx >= 0 && idx < ContactCount)
     {
         std::cout << "First Name : " << Contacts[idx].GetFirstName() << std::endl;
