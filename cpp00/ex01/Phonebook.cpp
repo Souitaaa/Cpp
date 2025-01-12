@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 21:30:21 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/12 18:22:04 by csouita          ###   ########.fr       */
+/*   Updated: 2025/01/13 00:11:45 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,30 +21,30 @@
 
 void PhoneBook::AddContact(std::string FirstName , std::string LastName , std::string NickName , std::string PhoneNumber , std::string DarkestSecret)
 {
-    if (FirstName.empty() || LastName.empty() || NickName.empty() || PhoneNumber.empty() || DarkestSecret.empty())
-    {
-        std::cout << "All fields are required" << std::endl;
-        return;
-    }
+    // if (FirstName.empty() || LastName.empty() || NickName.empty() || PhoneNumber.empty() || DarkestSecret.empty())
+    // {
+    //     std::cout << "All fields are required" << std::endl;
+    //     return;
+    // }
     if (ContactCount >= 8)
     {
-        ContactCount = 0;
+        ContactCount = 8;
+        OldestContactIndex = (OldestContactIndex + 1) % 8;
     }
+    Contacts[OldestContactIndex].SetFirstName(FirstName);
+    Contacts[OldestContactIndex].SetLastName(LastName);
+    Contacts[OldestContactIndex].SetNickName(NickName);
+    Contacts[OldestContactIndex].SetPhoneNumber(PhoneNumber);
+    Contacts[OldestContactIndex].SetDarkestSecret(DarkestSecret);
     if (ContactCount < 8)
-    {
-        Contacts[ContactCount].SetFirstName(FirstName);
-        Contacts[ContactCount].SetLastName(LastName);
-        Contacts[ContactCount].SetNickName(NickName);
-        Contacts[ContactCount].SetPhoneNumber(PhoneNumber);
-        Contacts[ContactCount].SetDarkestSecret(DarkestSecret);
-        ContactCount++;        
-    } 
+        ContactCount++;
+    OldestContactIndex = (OldestContactIndex + 1) % 8;
 }
 
 void PhoneBook::DisplayContact()
 {
     std::cout << "     Index|First Name| Last Name|  Nickname" << std::endl;
-    for (int i = 0; i < ContactCount; i++)
+    for (int i = 1; i < ContactCount; i++)
     {
         std::cout << "         " << i << "|";
         std::cout << Contacts[i].GetFirstName() << "|";
@@ -63,7 +63,7 @@ void PhoneBook::DisplayContacts(std::string index)
         std::cout << "The index is not valid" << std::endl;
         return;
     }
-    if (idx >= 0 && idx < ContactCount)
+    if (idx >= 1 && idx < ContactCount)
     {
         std::cout << "First Name : " << Contacts[idx].GetFirstName() << std::endl;
         std::cout << "Last Name : " << Contacts[idx].GetLastName() << std::endl;
