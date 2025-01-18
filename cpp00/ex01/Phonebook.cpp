@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 21:30:21 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/13 00:11:45 by csouita          ###   ########.fr       */
+/*   Updated: 2025/01/18 23:42:53 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,128 @@
 #include <cstdlib>
 #include <string>
 #include <sstream>
+#include <iomanip>
+
 
 void PhoneBook::AddContact(std::string FirstName , std::string LastName , std::string NickName , std::string PhoneNumber , std::string DarkestSecret)
 {
-    // if (FirstName.empty() || LastName.empty() || NickName.empty() || PhoneNumber.empty() || DarkestSecret.empty())
-    // {
-    //     std::cout << "All fields are required" << std::endl;
-    //     return;
-    // }
+    int f = 0;
+    int i = 0;
+if (FirstName.empty())
+{
+    std::cout << "First name is required" << std::endl;
+    f = 1;
+}
+    for (i = 0; FirstName[i] != '\0'; i++)
+    {
+        if (!isalpha(FirstName[i]))
+        {
+           if(NickName[i] == ' ' || NickName[i] == '\t')
+                continue;
+            else
+            {
+                std::cout << "First name must contain only letters" << std::endl;
+                f = 1;
+                i = 0;
+                break;
+            }
+        }
+    }
+    
+if (LastName.empty())
+{
+    std::cout << "Last name is required" << std::endl;
+    f = 1;
+}
+    for(i = 0; LastName[i] != '\0'; i++)
+    {
+        if (!isalpha(LastName[i]))
+        {
+            if(NickName[i] == ' ' || NickName[i] == '\t')
+                continue;
+            else
+            {
+                std::cout << "Last name must contain only letters" << std::endl;
+                f = 1;
+                i = 0;
+                break;
+            }
+        }
+    }
+ 
+
+if (NickName.empty())
+{
+    std::cout << "Nickname is required" << std::endl;
+    f = 1;
+}
+
+    for(i = 0; NickName[i] != '\0'; i++)
+    {
+        if (!isalpha(NickName[i]))
+        {
+            if(NickName[i] == ' ' || NickName[i] == '\t')
+                continue;
+            else
+            {
+                std::cout << "Nickname must contain only letters" << std::endl;
+                f = 1;
+                i = 0;
+                break;
+            }
+        }
+    }
+
+if (PhoneNumber.empty())
+{
+    std::cout << "Phone number is required" << std::endl;
+    f = 1;
+}
+
+    for(i = 0; PhoneNumber[i] ; i++)
+    {
+        if (!isdigit(PhoneNumber[i]))
+        {
+            if(NickName[i] == ' ' || NickName[i] == '\t')
+                continue;
+            else
+            {
+                std::cout << "Phone number must contain only numbers" << std::endl;
+                f = 1;
+                i = 0;
+                break;
+            }
+        }
+    }
+
+if (DarkestSecret.empty())
+{
+    std::cout << "Darkest secret is required" << std::endl;
+    f = 1;
+}
+
+    for(i = 0; DarkestSecret[i] != '\0'; i++)
+    {
+        if (!isalpha(DarkestSecret[i]))
+        {
+            if(NickName[i] == ' ' || NickName[i] == '\t')
+                continue;
+            else
+            {
+                std::cout << "Darkest secret must contain only letters" << std::endl;
+                f = 1;
+                i = 0;
+                break;
+            }
+        }
+    }
+
+    if (f == 1)
+        return;
     if (ContactCount >= 8)
     {
         ContactCount = 8;
-        OldestContactIndex = (OldestContactIndex + 1) % 8;
+        OldestContactIndex = 0;
     }
     Contacts[OldestContactIndex].SetFirstName(FirstName);
     Contacts[OldestContactIndex].SetLastName(LastName);
@@ -41,36 +151,86 @@ void PhoneBook::AddContact(std::string FirstName , std::string LastName , std::s
     OldestContactIndex = (OldestContactIndex + 1) % 8;
 }
 
+// void PhoneBook::DisplayContact()
+// {
+//     std::cout << "     Index|First Name| Last Name|  Nickname" << std::endl;
+//     for (int i = 0; i < ContactCount; i++)
+//     {
+//         std::cout << "         " << i << "|";
+//         std::cout << Contacts[i].GetFirstName() << "|";
+//         std::cout << Contacts[i].GetLastName() << "|";
+//         std::cout << Contacts[i].GetNickName() << std::endl;
+//     }
+// }
+
+std::string PhoneBook::TruncateString(std::string str) 
+{
+    if (str.length() > 10)
+    {
+        return str.substr(0, 9) + ".";
+    }
+    return str;
+}
+
 void PhoneBook::DisplayContact()
 {
-    std::cout << "     Index|First Name| Last Name|  Nickname" << std::endl;
-    for (int i = 1; i < ContactCount; i++)
+    std::cout << std::setw(10) << "Index" << "|"
+              << std::setw(10) << "First Name" << "|"
+              << std::setw(10) << "Last Name" << "|"
+              << std::setw(10) << "Nickname" << std::endl;
+    for (int i = 0; i < ContactCount; ++i)
     {
-        std::cout << "         " << i << "|";
-        std::cout << Contacts[i].GetFirstName() << "|";
-        std::cout << Contacts[i].GetLastName() << "|";
-        std::cout << Contacts[i].GetNickName() << std::endl;
+        std::cout << std::setw(10) << i << "|"
+                  << std::setw(10) << TruncateString(Contacts[i].GetFirstName()) << "|"
+                  << std::setw(10) << TruncateString(Contacts[i].GetLastName()) << "|"
+                  << std::setw(10) << TruncateString(Contacts[i].GetNickName()) << std::endl;
     }
 }
 
-void PhoneBook::DisplayContacts(std::string index)
+
+bool PhoneBook::DisplayContacts(std::string index)
 {
+    // if (index < 0 || index > ContactCount)
+    // {
+    //     return false;
+    // }
     int idx;
     std::stringstream ss(index);
     ss >> idx;
     if (ss.fail() && !ss.eof())
     {
         std::cout << "The index is not valid" << std::endl;
-        return;
+        return false;
     }
-    if (idx >= 1 && idx < ContactCount)
-    {
-        std::cout << "First Name : " << Contacts[idx].GetFirstName() << std::endl;
-        std::cout << "Last Name : " << Contacts[idx].GetLastName() << std::endl;
-        std::cout << "Nick Name : " << Contacts[idx].GetNickName() << std::endl;
-        std::cout << "Phone Number : " << Contacts[idx].GetPhoneNumber() << std::endl;
-        std::cout << "Darkest Secret : " << Contacts[idx].GetDarkestSecret() << std::endl;
-    }
-    else
-        std::cout << "The index is not valid" << std::endl;
+    if (idx >= 0 && idx < ContactCount)
+    Contact Contact = Contacts[idx];
+    std::cout << "First Name: " << Contacts[idx].GetFirstName() << std::endl;
+    std::cout << "Last Name: " << Contacts[idx].GetLastName() << std::endl;
+    std::cout << "Nickname: " << Contacts[idx].GetNickName() << std::endl;
+    std::cout << "Phone Number: " << Contacts[idx].GetPhoneNumber() << std::endl;
+    std::cout << "Darkest Secret: " << Contacts[idx].GetDarkestSecret() << std::endl;
+    return true;
 }
+
+
+// void PhoneBook::DisplayContacts(std::string index)
+// {
+//     int idx;
+//     std::stringstream ss(index);
+//     ss >> idx;
+//     if (ss.fail() && !ss.eof())
+//     {
+//         std::cout << "The index is not valid" << std::endl;
+//         return;
+//     }
+//     if (idx >= 0 && idx < ContactCount)
+//     {
+//         std::cout << "First Name : " << Contacts[idx].GetFirstName() << std::endl;
+//         std::cout << "Last Name : " << Contacts[idx].GetLastName() << std::endl;
+//         std::cout << "Nick Name : " << Contacts[idx].GetNickName() << std::endl;
+//         std::cout << "Phone Number : " << Contacts[idx].GetPhoneNumber() << std::endl;
+//         std::cout << "Darkest Secret : " << Contacts[idx].GetDarkestSecret() << std::endl;
+//     }
+//     else
+//         std::cout << "The index is not valid1" << std::endl;
+// }

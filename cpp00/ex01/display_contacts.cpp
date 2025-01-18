@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 21:24:23 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/13 00:13:02 by csouita          ###   ########.fr       */
+/*   Updated: 2025/01/18 22:19:37 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void PhoneBook::DisplayContacts()
               << std::setw(10) << "First Name" << "|"
               << std::setw(10) << "Last Name" << "|"
               << std::setw(10) << "Nickname" << std::endl;
-    for (int i = 1; i < contactCount; ++i)
+    for (int i = 0; i < contactCount; ++i)
     {
         std::cout << std::setw(10) << i << "|"
                   << std::setw(10) << TruncateString(contacts[i].GetFirstName()) << "|"
@@ -31,7 +31,7 @@ void PhoneBook::DisplayContacts()
 
 bool PhoneBook::DisplayContact(int index)
 {
-    if (index < 0 || index >= contactCount)
+    if (index < 0 || index > contactCount)
     {
         return false;
     }

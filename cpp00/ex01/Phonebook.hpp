@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 22:30:10 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/13 00:13:17 by csouita          ###   ########.fr       */
+/*   Updated: 2025/01/18 23:39:29 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,16 @@ class PhoneBook {
     private :
         Contact Contacts[8];
         int ContactCount;
-        int OldestContactIndex; // Add this line
+        int OldestContactIndex; 
     public :
     PhoneBook()
     {
         ContactCount = 0;
-        OldestContactIndex = 0; // Add this line
+        OldestContactIndex = 0; 
     }
-        void AddContact(std::string FirstName , std::string LastName , std::string NickName , std::string PhoneNumber , std::string DarkestSecret);
-        void DisplayContact();
-        void DisplayContacts(std::string index);
+    void AddContact(std::string FirstName, std::string LastName, std::string NickName, std::string PhoneNumber, std::string DarkestSecret);
+    void DisplayContact();
+    bool DisplayContacts(std::string index);
+    std::string TruncateString(std::string str);
 };
 #endif
