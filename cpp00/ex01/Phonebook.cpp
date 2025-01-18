@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 21:30:21 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/18 23:42:53 by csouita          ###   ########.fr       */
+/*   Updated: 2025/01/18 23:45:16 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,18 +151,6 @@ if (DarkestSecret.empty())
     OldestContactIndex = (OldestContactIndex + 1) % 8;
 }
 
-// void PhoneBook::DisplayContact()
-// {
-//     std::cout << "     Index|First Name| Last Name|  Nickname" << std::endl;
-//     for (int i = 0; i < ContactCount; i++)
-//     {
-//         std::cout << "         " << i << "|";
-//         std::cout << Contacts[i].GetFirstName() << "|";
-//         std::cout << Contacts[i].GetLastName() << "|";
-//         std::cout << Contacts[i].GetNickName() << std::endl;
-//     }
-// }
-
 std::string PhoneBook::TruncateString(std::string str) 
 {
     if (str.length() > 10)
@@ -190,10 +178,6 @@ void PhoneBook::DisplayContact()
 
 bool PhoneBook::DisplayContacts(std::string index)
 {
-    // if (index < 0 || index > ContactCount)
-    // {
-    //     return false;
-    // }
     int idx;
     std::stringstream ss(index);
     ss >> idx;
@@ -211,26 +195,3 @@ bool PhoneBook::DisplayContacts(std::string index)
     std::cout << "Darkest Secret: " << Contacts[idx].GetDarkestSecret() << std::endl;
     return true;
 }
-
-
-// void PhoneBook::DisplayContacts(std::string index)
-// {
-//     int idx;
-//     std::stringstream ss(index);
-//     ss >> idx;
-//     if (ss.fail() && !ss.eof())
-//     {
-//         std::cout << "The index is not valid" << std::endl;
-//         return;
-//     }
-//     if (idx >= 0 && idx < ContactCount)
-//     {
-//         std::cout << "First Name : " << Contacts[idx].GetFirstName() << std::endl;
-//         std::cout << "Last Name : " << Contacts[idx].GetLastName() << std::endl;
-//         std::cout << "Nick Name : " << Contacts[idx].GetNickName() << std::endl;
-//         std::cout << "Phone Number : " << Contacts[idx].GetPhoneNumber() << std::endl;
-//         std::cout << "Darkest Secret : " << Contacts[idx].GetDarkestSecret() << std::endl;
-//     }
-//     else
-//         std::cout << "The index is not valid1" << std::endl;
-// }

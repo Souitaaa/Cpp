@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 21:15:16 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/18 23:09:43 by csouita          ###   ########.fr       */
+/*   Updated: 2025/01/18 23:48:44 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int main()
         std::getline(std::cin , command);
         if (std::cin.eof())
         {
-            std::cout << "You Pressed ^D. Exiting phonebook now." << std::endl;
+            std::cout << "You Pressed ^D. Exiting Phonebook Now." << std::endl;
             return 0;
         }
         if(command == "EXIT")
@@ -46,35 +46,35 @@ int main()
             std::getline(std::cin , FirstName);
              if (std::cin.eof())
             {
-                std::cout << "You Pressed ^D. Exiting phonebook now." << std::endl;
+                std::cout << "You Pressed ^D. Exiting Phonebook Now." << std::endl;
                 return 0;
             }
             std::cout << "Enter the Last name :";
             std::getline(std::cin , LastName);
             if (std::cin.eof())
             {
-                std::cout << "You Pressed ^D. Exiting phonebook now." << std::endl;
+                std::cout << "You Pressed ^D. Exiting Phonebook Now." << std::endl;
                 return 0;
             }
             std::cout << "Enter The Nick name :";
             std::getline(std::cin , NickName);
             if (std::cin.eof())
             {
-                std::cout << "You Pressed ^D. Exiting phonebook now." << std::endl;
+                std::cout << "You Pressed ^D. Exiting Phonebook Now." << std::endl;
                 return 0;
             }
             std::cout << "Enter the Phone number :";
             std::getline(std::cin , PhoneNumber);
              if (std::cin.eof())
             {
-                std::cout << "You Pressed ^D. Exiting phonebook now." << std::endl;
+                std::cout << "You Pressed ^D. Exiting Phonebook Now." << std::endl;
                 return 0;
             }
             std::cout << "Enter the Darkest Secret :";
             std::getline(std::cin , DarkestSecret);
              if (std::cin.eof())
             {
-                std::cout << "You Pressed ^D. Exiting phonebook now." << std::endl;
+                std::cout << "You Pressed ^D. Exiting Phonebook Now." << std::endl;
                 return 0;
             }
             PhoneBook.AddContact(FirstName , LastName , NickName , PhoneNumber , DarkestSecret);
@@ -87,12 +87,12 @@ int main()
             std::getline(std::cin , input);
              if (std::cin.eof())
             {
-                std::cout << "You Pressed ^D. Exiting phonebook now." << std::endl;
+                std::cout << "You Pressed ^D. Exiting Phonebook Now." << std::endl;
                 return 0;
             }
             PhoneBook.DisplayContacts(input);
         }
         else
-            std::cout << "Command not found" << std::endl;
+            std::cout << "Command not Found" << std::endl;
     }
 }
