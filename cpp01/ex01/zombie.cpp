@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.hpp                                           :+:      :+:    :+:   */
+/*   zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 22:48:36 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/20 21:39:28 by csouita          ###   ########.fr       */
+/*   Created: 2025/01/20 20:48:37 by csouita           #+#    #+#             */
+/*   Updated: 2025/01/21 20:24:55 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_HPP
-#define MAIN_HPP
-#include "Contact.hpp"
-#include "Phonebook.hpp"
-#include <iostream>
-#include <string>
-#include <stdio.h>
-#include <unistd.h>
-#include <sstream>
-#endif
+#include "zombie.hpp"
+#include "main.hpp"
+
+void Zombie::SetName(std::string E_Name)
+{
+    Name = E_Name;
+}
+
+std::string Zombie::GetName()
+{
+    return Name;
+}
+void Zombie::announce(void)
+{
+    std::cout << GetName() << ": BraiiiiiiinnnzzzZ..." << std::endl;
+} 
+

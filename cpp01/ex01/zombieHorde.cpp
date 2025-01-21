@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.hpp                                           :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 22:48:36 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/20 21:39:28 by csouita          ###   ########.fr       */
+/*   Created: 2025/01/21 19:56:25 by csouita           #+#    #+#             */
+/*   Updated: 2025/01/21 20:09:20 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_HPP
-#define MAIN_HPP
-#include "Contact.hpp"
-#include "Phonebook.hpp"
-#include <iostream>
-#include <string>
-#include <stdio.h>
-#include <unistd.h>
-#include <sstream>
-#endif
+#include "zombie.hpp"
+
+Zombie* Zombie::zombieHorde(int N, std::string name)
+{
+    Zombie *Zombies = new Zombie[N];
+    for (int i = 0 ; i < N ;i++)
+    {
+        Zombies[i].SetName(name);
+        Zombies[i].announce();
+    }
+    return Zombies;
+}

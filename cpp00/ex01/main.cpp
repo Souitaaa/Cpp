@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 21:15:16 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/18 23:48:44 by csouita          ###   ########.fr       */
+/*   Updated: 2025/01/20 17:09:32 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int main()
         {
             std::cout << "Enter the First name :";
             std::getline(std::cin , FirstName);
-             if (std::cin.eof())
+            if (std::cin.eof())
             {
                 std::cout << "You Pressed ^D. Exiting Phonebook Now." << std::endl;
                 return 0;

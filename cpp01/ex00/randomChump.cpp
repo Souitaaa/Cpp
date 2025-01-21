@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.hpp                                           :+:      :+:    :+:   */
+/*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 22:48:36 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/20 21:39:28 by csouita          ###   ########.fr       */
+/*   Created: 2025/01/20 23:47:55 by csouita           #+#    #+#             */
+/*   Updated: 2025/01/20 23:49:27 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_HPP
-#define MAIN_HPP
-#include "Contact.hpp"
-#include "Phonebook.hpp"
-#include <iostream>
-#include <string>
-#include <stdio.h>
-#include <unistd.h>
-#include <sstream>
-#endif
+#include "zombie.hpp"
+
+void Zombie::randomChump(std::string name)
+{
+    Zombie Zombie3awtani;
+    Zombie3awtani.SetName(name);
+    Zombie3awtani.announce();
+}

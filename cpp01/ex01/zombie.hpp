@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.hpp                                           :+:      :+:    :+:   */
+/*   zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 22:48:36 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/20 21:39:28 by csouita          ###   ########.fr       */
+/*   Created: 2025/01/20 20:52:09 by csouita           #+#    #+#             */
+/*   Updated: 2025/01/21 20:23:14 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_HPP
-#define MAIN_HPP
-#include "Contact.hpp"
-#include "Phonebook.hpp"
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
+#include "main.hpp"
 #include <iostream>
-#include <string>
-#include <stdio.h>
-#include <unistd.h>
-#include <sstream>
+
+class Zombie {
+    private :
+        std::string Name;
+    public :
+        ~Zombie()
+        {
+            std::cout << "Zombie " << Name << " is dead" << std::endl;
+        }
+        void announce(void); 
+        void SetName(std::string Name);
+        std::string GetName();
+        static Zombie* zombieHorde(int N, std::string name);
+};
+
 #endif

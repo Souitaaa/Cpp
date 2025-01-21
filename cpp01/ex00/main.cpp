@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 22:48:36 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/20 21:39:28 by csouita          ###   ########.fr       */
+/*   Created: 2025/01/20 21:33:00 by csouita           #+#    #+#             */
+/*   Updated: 2025/01/20 23:43:08 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_HPP
-#define MAIN_HPP
-#include "Contact.hpp"
-#include "Phonebook.hpp"
-#include <iostream>
-#include <string>
-#include <stdio.h>
-#include <unistd.h>
-#include <sstream>
-#endif
+#include "main.hpp"
+
+int main()
+{
+    Zombie zombie;
+    Zombie *zombie2 = NULL;
+    zombie.SetName("Foo");
+    zombie.announce();
+    zombie2 = zombie.newZombie("Bar");  // 3lach machi hadi zombie2->newZombie("Bar")
+    delete zombie2;
+    zombie.randomChump("Baz");
+    return 0;
+}
