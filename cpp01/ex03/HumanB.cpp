@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 19:14:17 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/22 20:51:42 by csouita          ###   ########.fr       */
+/*   Updated: 2025/01/23 21:12:30 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "Weapon.hpp"
 #include <iostream>
 #include "Weapon.hpp"
+#include "main.hpp"
 
 std::string HumanB::getName()
 {
@@ -28,7 +29,7 @@ void HumanB::setName(std::string E_name)
 
 void HumanB::attack()
 {
-    std::cout <<getName() << " attacks with their " << Type.getType() << std::endl;
+    std::cout << getName() << " darbo b " << Type.getType() << std::endl;
 }
 
 HumanB::HumanB(std::string name)
@@ -36,7 +37,12 @@ HumanB::HumanB(std::string name)
     Name = name;
 }
 
-void HumanB::setWeapon(Weapon &E_Type)
+void HumanB::setWeapon(Weapon E_Type)
 {
     Type = E_Type;
+}
+HumanB::HumanB(std::string name, Weapon &type) 
+{
+    Type = type;
+    Name = name;
 }

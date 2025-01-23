@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 18:30:48 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/22 20:55:31 by csouita          ###   ########.fr       */
+/*   Updated: 2025/01/23 20:15:23 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class HumanA{
     private :
         std::string Name ;
-        Weapon Type;
+        Weapon &Type;
     public :
         HumanA(std::string name, Weapon &type);
         void attack();

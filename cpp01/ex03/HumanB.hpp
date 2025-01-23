@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 18:56:39 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/22 20:52:14 by csouita          ###   ########.fr       */
+/*   Updated: 2025/01/23 21:05:10 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ class HumanB{
         Weapon Type;
     public :
         HumanB(std::string name);
+        HumanB(std::string name, Weapon &type);
         void attack();
         std::string getName();
         void setName(std::string E_name);
-        void setWeapon(Weapon &E_Type);
+        void setWeapon(Weapon E_Type);
 };
 #endif
