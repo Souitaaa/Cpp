@@ -6,14 +6,14 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:49:43 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/20 21:33:18 by csouita          ###   ########.fr       */
+/*   Updated: 2025/01/22 20:04:15 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef MAIN_HPP
 #define MAIN_HPP
-#include "zombie.hpp"
+#include "Zombie.hpp"
 #include <iostream>
 #include <string>
 #include <stdio.h>
