@@ -6,14 +6,12 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:45:25 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/25 18:13:26 by csouita          ###   ########.fr       */
+/*   Updated: 2025/01/25 18:16:38 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include <iostream>
-#include <fstream>
-#include <string>
+#include "main.hpp"
 
 
 int main(int ac, char *av[]) 
