@@ -6,22 +6,20 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:20:12 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/27 01:16:24 by csouita          ###   ########.fr       */
+/*   Updated: 2025/01/28 17:24:00 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-int main()
+int main(int ac , char *av[])
 {
     Harl harl;
-    harl.complain("DEBUG");
-    std::cout << "---------------------------------------------------------------------" << std::endl;
-    harl.complain("INFO");
-    std::cout << "---------------------------------------------------------------------" << std::endl;
-    harl.complain("WARNING");
-    std::cout << "---------------------------------------------------------------------" << std::endl;
-    harl.complain("ERROR");
-    std::cout << "---------------------------------------------------------------------" << std::endl;
-    harl.complain("INVALID");
+    if (ac != 2)
+    {
+        std::cout << "Usage: ./complain [DEBUG, INFO, WARNING, ERROR]" << std::endl;
+        return 1;
+    }
+    harl.complain(av[1]);
+    return 0;
 }
