@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:58:18 by csouita           #+#    #+#             */
-/*   Updated: 2025/02/04 02:01:28 by csouita          ###   ########.fr       */
+/*   Updated: 2025/02/04 17:36:13 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int main()
     // ClapTrap scavtrap("souitaaa" ,10, 5, 2);
     // claptrap.operator=(scavtrap);
     scavtrap.beRepaired(10);
-    scav
     // claptrap.attack("enemy");
     scavtrap.attack("enemy");
     // claptrap.takeDamage(5);

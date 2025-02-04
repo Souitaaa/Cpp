@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:02:02 by csouita           #+#    #+#             */
-/*   Updated: 2025/02/04 01:51:06 by csouita          ###   ########.fr       */
+/*   Updated: 2025/02/04 18:49:24 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 
 ClapTrap::ClapTrap(std::string name) 
 {
-    Name = name;
+    this->Name = name;
+    this->HitPoints = 10;
+    this->EnergyPoints = 10;
+    this->AttackDamage = 0;
     std::cout << "ClapTrap " << Name << " is called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string E_Name ,int E_HitPoints, int E_EnergyPoints, int E_AttackDamage) 
+ClapTrap::ClapTrap() : Name("Default") 
 {
-    Name = E_Name;
-    HitPoints = E_HitPoints;
-    EnergyPoints = E_EnergyPoints;
-    AttackDamage = E_AttackDamage;
-    std::cout << "ClapTrap is called" << std::endl;
+    std::cout << "ClapTrap " << Name << " is called" << std::endl;
+    HitPoints = 10;
+    EnergyPoints = 10;
+    AttackDamage = 0;
 }
 
 ClapTrap::~ClapTrap()
@@ -34,7 +36,8 @@ ClapTrap::~ClapTrap()
 
 ClapTrap::ClapTrap(const ClapTrap& ClapTrap)
 {
-    (void)ClapTrap;
+    if(this == &ClapTrap)
+        return ;
     std::cout << "Copy ClapTrap " << Name << " is copied" << std::endl;
 }
 
@@ -93,10 +96,6 @@ void ClapTrap::beRepaired(unsigned int amount)
     std::cout << "Hit Points == " << HitPoints << std::endl;
 }
 
-// ClapTrap::ClapTrap() : Name(), HitPoints(), EnergyPoints(), AttackDamage()
-// {
-//     std::cout << "ClapTrap " << Name << " is called" << std::endl;
-// }
 ClapTrap& ClapTrap::operator=(const ClapTrap& ClapTrap)
 {
     std::cout << "ClapTrap " << Name << " is assigned" << std::endl;
@@ -107,35 +106,35 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& ClapTrap)
     return (*this);
 }  
 
+std::string ClapTrap::getName()
+{
+    return Name;
+}
 int ClapTrap::getHitPoints()
 {
-    return (HitPoints);
+    return HitPoints;
 }
 int ClapTrap::getEnergyPoints()
 {
-    return (EnergyPoints);
+    return EnergyPoints;
 }
 int ClapTrap::getAttackDamage()
 {
-    return (AttackDamage);
+    return AttackDamage;
 }
-void ClapTrap::setHitPoints(int HitPoints)
+void ClapTrap::setName(std::string E_name)
 {
-    ClapTrap::HitPoints = HitPoints;
+    Name = E_name;
 }
-void ClapTrap::setEnergyPoints(int EnergyPoints)
+void ClapTrap::setHitPoints(int E_HitPoints)
 {
-    ClapTrap::EnergyPoints = EnergyPoints;
+    HitPoints = E_HitPoints;
 }
-void ClapTrap::setAttackDamage(int AttackDamage)
+void ClapTrap::setEnergyPoints(int E_EnergyPoints)
 {
-    ClapTrap::AttackDamage = AttackDamage;
+    EnergyPoints = E_EnergyPoints;
 }
-std::string ClapTrap::getName()
+void ClapTrap::setAttackDamage(int E_AttackDamage)
 {
-    return (Name);
-}
-void ClapTrap::setName(std::string Name)
-{
-    ClapTrap::Name = Name;
+    AttackDamage = E_AttackDamage;
 }

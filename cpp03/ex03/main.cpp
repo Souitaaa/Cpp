@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:58:18 by csouita           #+#    #+#             */
-/*   Updated: 2025/02/04 01:54:03 by csouita          ###   ########.fr       */
+/*   Updated: 2025/02/04 21:32:52 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@ int main()
 {
     
     ClapTrap claptrap("souita");
+    DiamondTrap DiamondTrap2("charaaaaf");
     DiamondTrap DiamondTrap("souitaaa");
     DiamondTrap.attack("enemy");
-    // DiamondTrap DiamondTrap("souitaaa" ,10, 5, 2);
-    DiamondTrap.operator=(claptrap);
+    // DiamondTrap.operator=(DiamondTrap2);
+    DiamondTrap = DiamondTrap2;
+    DiamondTrap2.attack(DiamondTrap.getName());
     DiamondTrap.beRepaired(10);
     // claptrap.attack("enemy");
     DiamondTrap.attack("enemy");

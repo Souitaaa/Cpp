@@ -6,29 +6,56 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 21:22:28 by csouita           #+#    #+#             */
-/*   Updated: 2025/02/03 21:47:16 by csouita          ###   ########.fr       */
+/*   Updated: 2025/02/04 21:31:34 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name ,100, 50, 20) 
+FragTrap::FragTrap(std::string name) :ClapTrap(name)
 {
+    this->setName(getName());
+    this->setHitPoints(100);
+    this->setEnergyPoints(100);
+    this->setAttackDamage(30);
     std::cout << "FragTrap " << name << " is called" << std::endl;
+}
+
+FragTrap::FragTrap() : ClapTrap()
+{
+    this->setName(getName());
+    this->setHitPoints(100);
+    this->setEnergyPoints(100);
+    this->setAttackDamage(30);
+    std::cout << "FragTrap is called" << std::endl;
+}
+
+FragTrap::FragTrap(const FragTrap &FragTrap)
+{
+    if(this == &FragTrap)
+        return ;
+    this->setName(FragTrap::getName());
+    this->setHitPoints(FragTrap::getHitPoints());
+    this->setEnergyPoints(FragTrap::getEnergyPoints());
+    this->setAttackDamage(FragTrap::getAttackDamage());
+    std::cout << "FragTrap " << getName() << " is copied" << std::endl;
+}
+
+FragTrap& FragTrap::operator=(const FragTrap &FragTrap)
+{
+    if (this == &FragTrap)
+        return (*this);
+    FragTrap::setName(FragTrap::getName());
+    FragTrap::setHitPoints(FragTrap::getHitPoints());
+    FragTrap::setEnergyPoints(FragTrap::getEnergyPoints());
+    FragTrap::setAttackDamage(FragTrap::getAttackDamage());
+    return (*this);
 }
 
 FragTrap::~FragTrap()
 {
     std::cout << "FragTrap  is destroyed" << std::endl;
-}
-
-FragTrap::FragTrap(std::string E_Name ,int E_HitPoints, int E_EnergyPoints, int E_AttackDamage) : ClapTrap(E_Name, E_HitPoints, E_EnergyPoints, E_AttackDamage)
-{
-    E_AttackDamage = 20;
-    E_EnergyPoints = 50;
-    E_HitPoints = 100;
-    std::cout << "FragTrap " << E_Name << " is called" << std::endl;
 }
 
 void FragTrap::highFivesGuys()

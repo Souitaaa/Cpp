@@ -6,24 +6,25 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:02:02 by csouita           #+#    #+#             */
-/*   Updated: 2025/02/04 01:39:40 by csouita          ###   ########.fr       */
+/*   Updated: 2025/02/04 17:42:24 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap() : Name("Default") {
+    std::cout << "ClapTrap " << Name << " is called" << std::endl;
+    HitPoints = 10;
+    EnergyPoints = 10;
+    AttackDamage = 0;
+}
+
 ClapTrap::ClapTrap(std::string name) 
 {
     Name = name;
-    std::cout << "ClapTrap " << Name << " is called" << std::endl;
-}
-
-ClapTrap::ClapTrap(std::string E_Name ,int E_HitPoints, int E_EnergyPoints, int E_AttackDamage) 
-{
-    Name = E_Name;
-    HitPoints = E_HitPoints;
-    EnergyPoints = E_EnergyPoints;
-    AttackDamage = E_AttackDamage;
+    HitPoints = 10;
+    EnergyPoints = 10;
+    AttackDamage = 0;
     std::cout << "ClapTrap is called" << std::endl;
 }
 
