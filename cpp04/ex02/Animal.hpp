@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 16:45:14 by csouita           #+#    #+#             */
-/*   Updated: 2025/02/06 22:04:19 by csouita          ###   ########.fr       */
+/*   Updated: 2025/02/06 22:05:02 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ class Animal{
         Animal(const Animal& animal);
         Animal& operator=(const Animal& animal);
         std::string getType() const;
-
 };
 
 #endif
