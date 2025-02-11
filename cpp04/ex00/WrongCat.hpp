@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.cpp                                           :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 16:20:20 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/22 20:41:27 by csouita          ###   ########.fr       */
+/*   Created: 2025/02/06 01:15:01 by csouita           #+#    #+#             */
+/*   Updated: 2025/02/06 01:27:15 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <sstream>
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
+# include <iostream>
+# include <iomanip>
+# include <string>
+# include "WrongAnimal.hpp"
 
-int main() {
-    std::string str = "123";
-    int num;
-    std::stringstream(str) >> num;
-    std::cout << "The integer value is: " << num << std::endl;
-    return 0;
-}
+class WrongCat : public WrongAnimal{
+    public :
+        WrongCat();
+        ~WrongCat();
+        WrongCat(const WrongCat& copy);
+        WrongCat &operator=(const WrongCat& wrongcat);
+        void virtual makeSound() const;
+};
 
+#endif
