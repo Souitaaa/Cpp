@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 21:30:21 by csouita           #+#    #+#             */
-/*   Updated: 2025/02/11 00:10:42 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/28 22:51:46 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,6 @@ if (FirstName.empty())
         }
     }
     
-// if (LastName.empty())
-// {
-//     std::cout << "Last name is required" << std::endl;
-//     f = 1;
-// }
     for(i = 0; LastName[i] != '\0'; i++)
     {
         if (!isalpha(LastName[i]))
@@ -183,7 +178,7 @@ bool PhoneBook::DisplayContacts(std::string index)
     ss >> idx;
     if ((ss.fail() && !ss.eof()) || (idx < 0 || idx >= ContactCount))
     {
-        std::cout << "The index is not valid" << std::endl;
+        std::cout << "The index is out of range" << std::endl;
         return false;
     }
     if (idx >= 0 && idx < ContactCount)
