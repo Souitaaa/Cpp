@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 22:16:15 by csouita           #+#    #+#             */
-/*   Updated: 2025/05/16 21:25:18 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/16 23:14:12 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name")
 {
-    // ClapTrap::Name = name + "_clap_name";
+    ClapTrap::Name = name + "_clap_name";
     HitPoints = FragTrap::HitPoints;
     EnergyPoints = ScavTrap::EnergyPoints;
     AttackDamage = FragTrap::AttackDamage;
@@ -71,19 +71,4 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &DiamondTrap)
     AttackDamage = DiamondTrap.AttackDamage;
     Name = DiamondTrap.Name;
     return (*this);
-}
-
-void DiamondTrap::attack(const std::string &target)
-{
-    if (DiamondTrap::HitPoints <= 0)
-    {
-        std::cout << "ClapTrap " << Name << " is already dead !" << std::endl;
-        return;
-    }
-    if (DiamondTrap::EnergyPoints <= 0)
-    {
-        std::cout << "ClapTrap " << Name << " is out of energy !" << std::endl;
-        return;
-    }
-    std::cout << "ClapTrap " << Name << " attack " << target << " causing " << this->AttackDamage << "  points of damage   !" << std::endl;
 }

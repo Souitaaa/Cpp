@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:02:02 by csouita           #+#    #+#             */
-/*   Updated: 2025/05/16 21:23:39 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/16 23:12:47 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void ClapTrap::beRepaired(unsigned int amount)
     HitPoints += amount;
     if (amount != 0)
         EnergyPoints -= 1;
-    std::cout << EnergyPoints << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &ClapTrap)
@@ -102,36 +101,3 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &ClapTrap)
     ClapTrap::AttackDamage = ClapTrap.AttackDamage;
     return (*this);
 }
-
-// std::string ClapTrap::getName()
-// {
-//     return Name;
-// }
-// int ClapTrap::getHitPoints()
-// {
-//     return HitPoints;
-// }
-// int ClapTrap::getEnergyPoints()
-// {
-//     return EnergyPoints;
-// }
-// int ClapTrap::getAttackDamage()
-// {
-//     return AttackDamage;
-// }
-// void ClapTrap::setName(std::string E_name)
-// {
-//     Name = E_name;
-// }
-// void ClapTrap::setHitPoints(int E_HitPoints)
-// {
-//     HitPoints = E_HitPoints;
-// }
-// void ClapTrap::setEnergyPoints(int E_EnergyPoints)
-// {
-//     EnergyPoints = E_EnergyPoints;
-// }
-// void ClapTrap::setAttackDamage(int E_AttackDamage)
-// {
-//     AttackDamage = E_AttackDamage;
-// }

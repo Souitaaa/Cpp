@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:02:02 by csouita           #+#    #+#             */
-/*   Updated: 2025/05/16 21:24:43 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/16 23:13:21 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ void ClapTrap::beRepaired(unsigned int amount)
     std::cout << "ClapTrap " << Name << " is repaired by " << amount << " hit points !" << std::endl;
     HitPoints += amount;
     EnergyPoints -= 1;
-    std::cout << EnergyPoints << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &ClapTrap)

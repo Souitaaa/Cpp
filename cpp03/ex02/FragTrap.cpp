@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 21:22:28 by csouita           #+#    #+#             */
-/*   Updated: 2025/05/16 21:24:51 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/16 23:13:38 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ FragTrap::FragTrap() : ClapTrap()
 
 FragTrap::FragTrap(const FragTrap &FragTrap) : ClapTrap(FragTrap)
 {
-    // if(this == &FragTrap)
-    //     return ;
+    if(this == &FragTrap)
+        return ;  // TODO
     std::cout << "FragTrap " << Name << " is copied" << std::endl;
 }
 

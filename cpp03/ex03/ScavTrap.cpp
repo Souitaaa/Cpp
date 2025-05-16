@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:45:19 by csouita           #+#    #+#             */
-/*   Updated: 2025/05/16 21:25:35 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/16 23:14:34 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,22 @@ ScavTrap::ScavTrap(const ScavTrap &ScavTrap) : ClapTrap(ScavTrap)
     if (this == &ScavTrap)
         return;
     std::cout << "Copy ScavTrap " << this->Name << " is copied" << std::endl;
+}
+
+void ScavTrap::attack(const std::string &target)
+{
+    if (HitPoints <= 0)
+    {
+        std::cout << "ClapTrap " << Name << " is already dead !" << std::endl;
+        return;
+    }
+    if (EnergyPoints <= 0)
+    {
+        std::cout << "ClapTrap " << Name << " is out of energy !" << std::endl;
+        return;
+    }
+    std::cout << "ClapTrap " << Name << " attack " << target << " causing " << AttackDamage << "  points of damage   !" << std::endl;
+    EnergyPoints -= 1;
 }
 
 void ScavTrap::guardGate()

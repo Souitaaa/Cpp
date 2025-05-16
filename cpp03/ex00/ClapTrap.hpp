@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:58:57 by csouita           #+#    #+#             */
-/*   Updated: 2025/05/16 21:23:44 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/16 23:12:56 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,6 @@ public:
     void attack(const std::string &target);
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
-    // std::string getName();
-    // int getHitPoints();
-    // int getEnergyPoints();
-    // int getAttackDamage();
-    // void setName(std::string E_name);
-    // void setHitPoints(int E_HitPoints);
-    // void setEnergyPoints(int E_EnergyPoints);
-    // void setAttackDamage(int E_AttackDamage);
 };
 
 #endif

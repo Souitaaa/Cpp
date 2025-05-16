@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:44:34 by csouita           #+#    #+#             */
-/*   Updated: 2025/05/16 21:25:37 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/16 23:07:38 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ public:
     ScavTrap &operator=(const ScavTrap &ScavTrap);
     ScavTrap(const ScavTrap &ScavTrap);
     void guardGate();
+    void attack(const std::string &target);
 };
 #endif
