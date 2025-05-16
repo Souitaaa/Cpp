@@ -6,46 +6,45 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 21:22:28 by csouita           #+#    #+#             */
-/*   Updated: 2025/02/04 18:35:14 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/16 21:24:51 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-
-FragTrap::FragTrap(std::string name) :ClapTrap(name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-    this->setName(getName());
-    this->setHitPoints(100);
-    this->setEnergyPoints(100);
-    this->setAttackDamage(30);
+    HitPoints = 100;
+    EnergyPoints = 100;
+    AttackDamage = 30;
     std::cout << "FragTrap " << name << " is called" << std::endl;
 }
 
 FragTrap::FragTrap() : ClapTrap()
 {
-    this->setName(getName());
-    this->setHitPoints(100);
-    this->setEnergyPoints(100);
-    this->setAttackDamage(30);
+    Name = "Default";
+    HitPoints = 100;
+    EnergyPoints = 100;
+    AttackDamage = 30;
     std::cout << "FragTrap is called" << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap &FragTrap)
+FragTrap::FragTrap(const FragTrap &FragTrap) : ClapTrap(FragTrap)
 {
-    if(this == &FragTrap)
-        return ;
-    std::cout << "FragTrap " << getName() << " is copied" << std::endl;
+    // if(this == &FragTrap)
+    //     return ;
+    std::cout << "FragTrap " << Name << " is copied" << std::endl;
 }
 
-FragTrap& FragTrap::operator=(const FragTrap &FragTrap)
+FragTrap &FragTrap::operator=(const FragTrap &FragTrap)
 {
     if (this == &FragTrap)
         return (*this);
-    FragTrap::setName(FragTrap::getName());
-    FragTrap::setHitPoints(FragTrap::getHitPoints());
-    FragTrap::setEnergyPoints(FragTrap::getEnergyPoints());
-    FragTrap::setAttackDamage(FragTrap::getAttackDamage());
+    ClapTrap::Name = FragTrap.Name;
+    ClapTrap::HitPoints = FragTrap.HitPoints;
+    ClapTrap::EnergyPoints = FragTrap.EnergyPoints;
+    ClapTrap::AttackDamage = FragTrap.AttackDamage;
+    std::cout << "FragTrap " << this->Name << " is assigned" << std::endl;
     return (*this);
 }
 

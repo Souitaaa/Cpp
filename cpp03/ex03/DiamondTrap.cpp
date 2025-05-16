@@ -6,38 +6,48 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 22:16:15 by csouita           #+#    #+#             */
-/*   Updated: 2025/02/04 21:31:16 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/16 21:25:18 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(std::string name)  :  FragTrap(name), ScavTrap(name) 
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name")
 {
-    this->Name = name;
-    this->setHitPoints(FragTrap::getHitPoints());
-    this->setEnergyPoints(ScavTrap::getEnergyPoints());
-    this->setAttackDamage(FragTrap::getAttackDamage());
+    // ClapTrap::Name = name + "_clap_name";
+    HitPoints = FragTrap::HitPoints;
+    EnergyPoints = ScavTrap::EnergyPoints;
+    AttackDamage = FragTrap::AttackDamage;
+    Name = name;
     std::cout << "DiamondTrap " << name << " is called" << std::endl;
+}
+
+void DiamondTrap::displayStats() const
+{
+    std::cout << "DiamondTrap " << Name << " stats:" << std::endl;
+    std::cout << "Hit Points: " << HitPoints << std::endl;
+    std::cout << "Energy Points: " << EnergyPoints << std::endl;
+    std::cout << "Attack Damage: " << AttackDamage << std::endl;
 }
 
 DiamondTrap::DiamondTrap() : FragTrap(), ScavTrap()
 {
-    this->setName("Default");
-    this->setHitPoints(FragTrap::getHitPoints());
-    this->setEnergyPoints(ScavTrap::getEnergyPoints());
-    this->setAttackDamage(FragTrap::getAttackDamage());
+    Name = "Default";
+    HitPoints = FragTrap::HitPoints;
+    EnergyPoints = ScavTrap::EnergyPoints;
+    AttackDamage = FragTrap::AttackDamage;
     std::cout << "DiamondTrap is called" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& DiamondTrap)
+DiamondTrap::DiamondTrap(const DiamondTrap &DiamondTrap)
 {
     if (this == &DiamondTrap)
-        return ;
-    this->setName(DiamondTrap::getName());
-    this->setHitPoints(DiamondTrap::getHitPoints());
-    this->setEnergyPoints(DiamondTrap::getEnergyPoints());
-    this->setAttackDamage(DiamondTrap::getAttackDamage());
+        return;
+    ClapTrap::Name = DiamondTrap.ClapTrap::Name;
+    HitPoints = DiamondTrap.HitPoints;
+    EnergyPoints = DiamondTrap.EnergyPoints;
+    AttackDamage = DiamondTrap.AttackDamage;
+    Name = DiamondTrap.Name;
     std::cout << "Copy DiamondTrap " << Name << " is copied" << std::endl;
 }
 
@@ -47,34 +57,33 @@ DiamondTrap::~DiamondTrap()
 }
 void DiamondTrap::whoAmI()
 {
-    std::cout << "My name is " << Name << " and my ClapTrap name is " << ClapTrap::getName() << std::endl;
+    std::cout << "My name is " << Name << " and my ClapTrap name is " << ClapTrap::Name << std::endl;
 }
 
-
-
-DiamondTrap &DiamondTrap::operator=(const DiamondTrap& DiamondTrap)
+DiamondTrap &DiamondTrap::operator=(const DiamondTrap &DiamondTrap)
 {
     if (this == &DiamondTrap)
         return (*this);
     std::cout << "DiamondTrap " << Name << " is assigned" << std::endl;
-    this->setName(DiamondTrap::getName());
-    this->setHitPoints(DiamondTrap::getHitPoints());
-    this->setEnergyPoints(DiamondTrap::getEnergyPoints());
-    this->setAttackDamage(DiamondTrap::getAttackDamage());
+    ClapTrap::Name = DiamondTrap.ClapTrap::Name;
+    HitPoints = DiamondTrap.HitPoints;
+    EnergyPoints = DiamondTrap.EnergyPoints;
+    AttackDamage = DiamondTrap.AttackDamage;
+    Name = DiamondTrap.Name;
     return (*this);
 }
 
-void DiamondTrap::attack(const std::string& target)
+void DiamondTrap::attack(const std::string &target)
 {
-    if (DiamondTrap::getHitPoints() <= 0)
+    if (DiamondTrap::HitPoints <= 0)
     {
         std::cout << "ClapTrap " << Name << " is already dead !" << std::endl;
-        return ;
+        return;
     }
-    if (DiamondTrap::getEnergyPoints() <= 0)
+    if (DiamondTrap::EnergyPoints <= 0)
     {
         std::cout << "ClapTrap " << Name << " is out of energy !" << std::endl;
-        return ;
+        return;
     }
-    std::cout << "ClapTrap " << Name << " attack " << target << " causing " << getAttackDamage() << "  points of damage   !" << std::endl;
+    std::cout << "ClapTrap " << Name << " attack " << target << " causing " << this->AttackDamage << "  points of damage   !" << std::endl;
 }
