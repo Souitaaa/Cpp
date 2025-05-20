@@ -6,20 +6,23 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:38:47 by csouita           #+#    #+#             */
-/*   Updated: 2025/02/06 01:19:48 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/21 00:01:48 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
+#include "Brain.hpp"
 
 Cat::Cat()
 {
     std::cout << "Cat constructor called" << std::endl;
+    brain = new Brain();
 }
 
 Cat::~Cat()
 {
     std::cout << "Cat destructor called" << std::endl;
+    delete this->brain;
 }
 
 void Cat::makeSound() const
@@ -29,15 +32,21 @@ void Cat::makeSound() const
 
 Cat& Cat::operator=(const Cat& cat)
 {
+    delete this->brain;
+    brain = new Brain();
     if (this == &cat)
         return (*this);
+    for (int i = 0; i < 100; i++)
+        ideas[i] = cat.ideas[i];
     std::cout << "Cat assignement operator called" << std::endl;
     return (*this);
 }
 
-Cat::Cat(const Cat& copy)
+Cat::Cat(const Cat& copy) : Animal(copy)
 {
-    if (this == &copy)
-        return ;
-    std::cout << "Cat copy constructor called" << std::endl;
+    if (this == &cat)
+        return (*this);
+    for (int i = 0; i < 100; i++)
+        ideas[i] = brain.ideas[i];
+        std::cout << "Cat copy constructor called" << std::endl;
 }

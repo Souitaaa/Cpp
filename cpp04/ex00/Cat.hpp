@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:36:07 by csouita           #+#    #+#             */
-/*   Updated: 2025/02/06 01:25:40 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/20 16:11:24 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Cat : public Animal{
         Cat();
         ~Cat();
         Cat(const Cat& copy);
-        Cat &operator=(const Cat& cat);
+        Cat &operator=(const Cat& other);
         void virtual makeSound() const;
 };
 

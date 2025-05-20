@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 16:45:14 by csouita           #+#    #+#             */
-/*   Updated: 2025/02/06 01:32:22 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/20 16:25:39 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ class Animal{
         std::string Type;
     public :
         Animal();
-        // ~Animal();
         virtual ~Animal();
         void virtual makeSound() const;
         Animal(const Animal& animal);

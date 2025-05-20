@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 16:47:55 by csouita           #+#    #+#             */
-/*   Updated: 2025/02/06 01:32:41 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/20 17:36:14 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ Animal::Animal(const Animal& animal)
 {
     if (this == &animal)
         return ;
+    Type = animal.Type;
     std::cout << "Animal copy constructor called" << std::endl;
 }
 
@@ -38,6 +39,7 @@ Animal& Animal::operator=(const Animal& animal)
 {
     if (this == &animal)
         return (*this);
+    Type = animal.Type
     std::cout << "Animal assignation operator called" << std::endl;
     return (*this);
 }

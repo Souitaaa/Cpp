@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:31:07 by csouita           #+#    #+#             */
-/*   Updated: 2025/02/06 18:35:57 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/18 16:59:59 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@
 int main()
 {   
     Animal *animals[10];
-    for (int i = 0 ; i < 10 ; i++)
+    for (int i = 0 ; i < 2 ; i++)
     {
         if (i % 2 == 0)
             animals[i] = new Dog();
         else
             animals[i] = new Cat();
     }
-    for (int i = 0 ; i < 10 ; i++)
+    for (int i = 0 ; i < 2 ; i++)
     {
         animals[i]->makeSound();
     }
-    for (int i = 0 ; i < 10 ; i++)
+    for (int i = 0 ; i < 2; i++)
     {
         delete animals[i];
     }

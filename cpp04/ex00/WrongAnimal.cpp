@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 01:12:30 by csouita           #+#    #+#             */
-/*   Updated: 2025/02/06 01:27:00 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/20 18:27:09 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,16 @@ WrongAnimal &WrongAnimal::operator=(const WrongAnimal &wronganimal)
 {
     if (this == &wronganimal)
         return (*this);
+    *this = wronganimal;
     std::cout << "WrongAnimal assignement operator called" << std::endl;
     return (*this);
 }
 
-WrongAnimal::WrongAnimal(const WrongAnimal &copy)
+WrongAnimal::WrongAnimal(const WrongAnimal &copy) 
 {
     if (this == &copy)
         return ;
+    Type = copy.Type;
     std::cout << "WrongAnimal copy constructor called" << std::endl;
 }
 
