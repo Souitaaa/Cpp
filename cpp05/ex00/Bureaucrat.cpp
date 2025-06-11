@@ -30,7 +30,7 @@ int Bureaucrat::getGrade() const {
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name) {
     if (grade < 1)
         throw GradeTooHighException("Grade Too High");
-    if (grade > 150)
+    else if (grade > 150)
         throw GradeTooLowException("Grade Too Low");
     this->grade = grade;
 }
@@ -55,3 +55,4 @@ void Bureaucrat::decrementGrade() {
         throw BureaucratException("Cannot decrement grade below 150.");
     grade++;
 }
+

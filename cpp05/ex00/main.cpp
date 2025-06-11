@@ -15,11 +15,24 @@
 int main()
 {
     try {
-        Bureaucrat bureaucrat("John Doe",0);
-        // std::cout << bureaucrat << std::endl;
-    } catch (const Bureaucrat::BureaucratException &e) {
+        Bureaucrat bureaucrat("John Doe",15);
+        std::cout << bureaucrat << std::endl;
+        bureaucrat.incrementGrade();
+        std::cout << "After increment: " << bureaucrat << std::endl;
+        bureaucrat.decrementGrade();
+        std::cout << "After decrement: " << bureaucrat << std::endl;
+        bureaucrat.setGrade(150);
+        std::cout << "After setting grade to 150: " << bureaucrat << std::endl;
+        bureaucrat.setGrade(0); // This will throw an exception
+    } 
+    catch (const Bureaucrat::BureaucratException &e) {
         std::cerr << "Bureaucrat error: " << e.what() << std::endl;
     }
-
+    catch (const Bureaucrat::GradeTooHighException &e) {
+        std::cerr << "Grade too high: " << e.what() << std::endl;
+    } 
+    catch (const Bureaucrat::GradeTooLowException &e) {
+        std::cerr << "Grade too low: " << e.what() << std::endl;
+    }
     return 0;
 }
