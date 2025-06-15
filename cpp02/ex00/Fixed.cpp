@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 00:25:52 by csouita           #+#    #+#             */
-/*   Updated: 2025/02/09 01:10:25 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/12 17:52:29 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ int Fixed::getRawBits(void) const
 {
     std::cout << "getRawBits member function called" << std::endl;
     return this->Value;
-}   
+}
 
 Fixed& Fixed::operator=(const Fixed &fixed)
 {
     std::cout << "Copy assignment operator called" << std::endl;
     if (this != &fixed)
-        this->Value = fixed.getRawBits();
+        this->Value = fixed.getRawBits();  
     return *this;
 }

@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 01:12:30 by csouita           #+#    #+#             */
-/*   Updated: 2025/05/20 18:27:09 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/21 17:02:55 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ WrongAnimal::WrongAnimal(const WrongAnimal &copy)
 {
     if (this == &copy)
         return ;
-    Type = copy.Type;
+    this->Type = copy.Type;
     std::cout << "WrongAnimal copy constructor called" << std::endl;
 }
 

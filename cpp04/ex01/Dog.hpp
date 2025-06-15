@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:37:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/05/18 16:44:42 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/21 16:40:17 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 # include "Animal.hpp"
 # include "Brain.hpp"
 
-
-class Dog : public Animal{
+class Brain;
+class Dog : public Animal
+{
     private : 
         Brain *brain;
     public :

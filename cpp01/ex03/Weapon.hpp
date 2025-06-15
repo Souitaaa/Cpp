@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 18:18:17 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/23 20:53:28 by csouita          ###   ########.fr       */
+/*   Updated: 2025/04/12 22:21:30 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,5 @@ class Weapon {
         std::string getType();
         void setType(std::string E_ttype);
 };
-
 
 #endif

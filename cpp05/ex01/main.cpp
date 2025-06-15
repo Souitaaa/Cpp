@@ -16,7 +16,7 @@
 int main()
 {
     try {
-        Form form("Form1", 5, 10);
+        Form form("Form1", 15, 10);
         Bureaucrat bureaucrat("lhossin",15);
         std::cout << bureaucrat << std::endl;
         bureaucrat.incrementGrade();
@@ -28,20 +28,8 @@ int main()
         form.beSigned(bureaucrat2);
         bureaucrat.signForm(form);
     }
-    catch (const Bureaucrat::BureaucratException &e) {
-        std::cerr << "Bureaucrat error: " << e.what() << std::endl;
-    }
-    catch (const Bureaucrat::GradeTooHighException &e) {
-        std::cerr << "Grade too high: " << e.what() << std::endl;
-    } 
-    catch (const Bureaucrat::GradeTooLowException &e) {
-        std::cerr << "Grade too low: " << e.what() << std::endl;
-    }
-    catch (const Form::GradeTooLowException &e) {
-        std::cerr << "Form error: " << e.what() << std::endl;
-    }
     catch (const std::exception &e) {
-        std::cerr << "An unexpected error occurred: " << e.what() << std::endl;
+        std::cerr << e.what() << std::endl;
     }
     std::cout << "End of program." << std::endl;
     return 0;

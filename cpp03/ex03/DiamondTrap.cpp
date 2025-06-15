@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 22:16:15 by csouita           #+#    #+#             */
-/*   Updated: 2025/05/16 23:14:12 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/17 15:45:13 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,6 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name")
     std::cout << "DiamondTrap " << name << " is called" << std::endl;
 }
 
-void DiamondTrap::displayStats() const
-{
-    std::cout << "DiamondTrap " << Name << " stats:" << std::endl;
-    std::cout << "Hit Points: " << HitPoints << std::endl;
-    std::cout << "Energy Points: " << EnergyPoints << std::endl;
-    std::cout << "Attack Damage: " << AttackDamage << std::endl;
-}
-
 DiamondTrap::DiamondTrap() : FragTrap(), ScavTrap()
 {
     Name = "Default";
@@ -42,7 +34,7 @@ DiamondTrap::DiamondTrap() : FragTrap(), ScavTrap()
 DiamondTrap::DiamondTrap(const DiamondTrap &DiamondTrap)
 {
     if (this == &DiamondTrap)
-        return;
+    return;
     ClapTrap::Name = DiamondTrap.ClapTrap::Name;
     HitPoints = DiamondTrap.HitPoints;
     EnergyPoints = DiamondTrap.EnergyPoints;
@@ -58,6 +50,20 @@ DiamondTrap::~DiamondTrap()
 void DiamondTrap::whoAmI()
 {
     std::cout << "My name is " << Name << " and my ClapTrap name is " << ClapTrap::Name << std::endl;
+}
+
+void DiamondTrap::displayStats() const
+{
+    std::cout << "DiamondTrap " << Name << " stats:" << std::endl;
+    std::cout << "Hit Points: " << HitPoints << std::endl;
+    std::cout << "Energy Points: " << EnergyPoints << std::endl;
+    std::cout << "Attack Damage: " << AttackDamage << std::endl;
+}
+
+void DiamondTrap::attack(const std::string &target)
+{
+    DiamondTrap::ScavTrap::attack(target);
+    std::cout << "DiamondTrap " << Name << " attack " << target << " causing " << AttackDamage << " points of damage !" << std::endl;
 }
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &DiamondTrap)

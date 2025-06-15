@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:21:31 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/28 17:24:06 by csouita          ###   ########.fr       */
+/*   Updated: 2025/04/12 23:08:53 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void Harl::complain(std::string level)
         if (level == levels_str[i])
             break;
     }
+    
     switch (i)
     {
         case 0:

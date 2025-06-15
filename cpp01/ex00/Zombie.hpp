@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:52:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/22 20:03:51 by csouita          ###   ########.fr       */
+/*   Updated: 2025/04/14 20:16:39 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,11 @@ class Zombie {
     private :
         std::string Name;
     public :
-        ~Zombie()
-        {
-            std::cout << "Zombie " << Name << " is dead" << std::endl;
-        }
+        ~Zombie();
         void announce(void); 
         void SetName(std::string Name);
         std::string GetName();
-        static Zombie* newZombie(std::string name);
+        Zombie* newZombie(std::string name);
         void randomChump(std::string name);
 };
 

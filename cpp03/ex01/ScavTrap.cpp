@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:45:19 by csouita           #+#    #+#             */
-/*   Updated: 2025/05/16 21:24:13 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/17 15:38:39 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,18 @@ ScavTrap::~ScavTrap()
     std::cout << "ScavTrap  is destroyed" << std::endl;
 }
 
+ScavTrap::ScavTrap(const ScavTrap &ScavTrap) : ClapTrap(ScavTrap)
+{
+    if (this == &ScavTrap)
+        return;
+    std::cout << "Copy ScavTrap " << this->Name << " is copied" << std::endl;
+}
+
+void ScavTrap::guardGate()
+{
+    std::cout << "ScavTrap have enterred in Gate keeper mode" << std::endl;
+}
+
 ScavTrap &ScavTrap::operator=(const ScavTrap &ScavTrap)
 {
     if (this == &ScavTrap)
@@ -42,14 +54,18 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &ScavTrap)
     return (*this);
 }
 
-ScavTrap::ScavTrap(const ScavTrap &ScavTrap) : ClapTrap(ScavTrap)
+void ScavTrap::attack(const std::string &target)
 {
-    if (this == &ScavTrap)
+    if (HitPoints <= 0)
+    {
+        std::cout << "ScavTrap " << Name << " is already dead !" << std::endl;
         return;
-    std::cout << "Copy ScavTrap " << this->Name << " is copied" << std::endl;
-}
-
-void ScavTrap::guardGate()
-{
-    std::cout << "ScavTrap have enterred in Gate keeper mode" << std::endl;
+    }
+    if (EnergyPoints <= 0)
+    {
+        std::cout << "ScavTrap " << Name << " is out of energy !" << std::endl;
+        return;
+    }
+    std::cout << "ScavTrap " << Name << " attack " << target << " causing " << AttackDamage << "  points of damage   !" << std::endl;
+    EnergyPoints -= 1;
 }

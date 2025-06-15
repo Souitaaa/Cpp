@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 17:05:46 by csouita           #+#    #+#             */
-/*   Updated: 2025/05/18 16:54:19 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/21 16:46:14 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ class Brain{
         ~Brain();
         Brain(const Brain& copy);
         Brain& operator=(const Brain& brain);
-        
 };
 
 #endif

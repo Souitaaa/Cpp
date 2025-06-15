@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 21:22:28 by csouita           #+#    #+#             */
-/*   Updated: 2025/05/16 23:13:38 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/17 15:25:28 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,17 @@ FragTrap::FragTrap() : ClapTrap()
 
 FragTrap::FragTrap(const FragTrap &FragTrap) : ClapTrap(FragTrap)
 {
-    if(this == &FragTrap)
-        return ;  // TODO
     std::cout << "FragTrap " << Name << " is copied" << std::endl;
+}
+
+FragTrap::~FragTrap()
+{
+    std::cout << "FragTrap  is destroyed" << std::endl;
+}
+
+void FragTrap::highFivesGuys()
+{
+    std::cout << "FragTrap is requesting for a high five" << std::endl;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &FragTrap)
@@ -46,14 +54,4 @@ FragTrap &FragTrap::operator=(const FragTrap &FragTrap)
     ClapTrap::AttackDamage = FragTrap.AttackDamage;
     std::cout << "FragTrap " << this->Name << " is assigned" << std::endl;
     return (*this);
-}
-
-FragTrap::~FragTrap()
-{
-    std::cout << "FragTrap  is destroyed" << std::endl;
-}
-
-void FragTrap::highFivesGuys()
-{
-    std::cout << "FragTrap is requesting for a high five" << std::endl;
 }

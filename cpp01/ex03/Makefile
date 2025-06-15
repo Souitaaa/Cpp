@@ -1,7 +1,7 @@
 NAME = violence
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 #-fsanitize=address
 
 SRC = Weapon.cpp main.cpp HumanA.cpp HumanB.cpp
 OBJ = $(SRC:.cpp=.o)

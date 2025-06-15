@@ -6,35 +6,28 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 21:30:21 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/28 22:51:46 by csouita          ###   ########.fr       */
+/*   Updated: 2025/06/11 22:21:25 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "Phonebook.hpp"
-#include <iostream>
-#include <string>
-#include <iostream>
-#include <cstdlib>
-#include <string>
-#include <sstream>
-#include <iomanip>
 
-
-void PhoneBook::AddContact(std::string FirstName , std::string LastName , std::string NickName , std::string PhoneNumber , std::string DarkestSecret)
+void PhoneBook::AddContact(std::string FirstName, std::string LastName, std::string NickName, std::string PhoneNumber, std::string DarkestSecret)
 {
     int f = 0;
     int i = 0;
-if (FirstName.empty())
-{
-    std::cout << "First name is required" << std::endl;
-    f = 1;
-}
+
+    if (FirstName.empty())
+    {
+        std::cout << "First name is required" << std::endl;
+        f = 1;
+    }
+
     for (i = 0; FirstName[i] != '\0'; i++)
     {
         if (!isalpha(FirstName[i]))
         {
-           if(NickName[i] == ' ' || NickName[i] == '\t')
+            if (NickName[i] == ' ' || NickName[i] == '\t')
                 continue;
             else
             {
@@ -45,12 +38,18 @@ if (FirstName.empty())
             }
         }
     }
-    
-    for(i = 0; LastName[i] != '\0'; i++)
+
+    if (LastName.empty())
+    {
+        std::cout << "Last name is required" << std::endl;
+        f = 1;
+    }
+
+    for (i = 0; LastName[i] != '\0'; i++)
     {
         if (!isalpha(LastName[i]))
         {
-            if(NickName[i] == ' ' || NickName[i] == '\t')
+            if (NickName[i] == ' ' || NickName[i] == '\t')
                 continue;
             else
             {
@@ -61,41 +60,24 @@ if (FirstName.empty())
             }
         }
     }
- 
 
-if (NickName.empty())
-{
-    std::cout << "Nickname is required" << std::endl;
-    f = 1;
-}
-
-    for(i = 0; NickName[i] != '\0'; i++)
+    if (NickName.empty())
     {
-        if (!isalpha(NickName[i]))
-        {
-            if(NickName[i] == ' ' || NickName[i] == '\t')
-                continue;
-            else
-            {
-                std::cout << "Nickname must contain only letters" << std::endl;
-                f = 1;
-                i = 0;
-                break;
-            }
-        }
+        std::cout << "Nickname is required" << std::endl;
+        f = 1;
     }
 
-if (PhoneNumber.empty())
-{
-    std::cout << "Phone number is required" << std::endl;
-    f = 1;
-}
+    if (PhoneNumber.empty())
+    {
+        std::cout << "Phone number is required" << std::endl;
+        f = 1;
+    }
 
-    for(i = 0; PhoneNumber[i] ; i++)
+    for (i = 0; PhoneNumber[i]; i++)
     {
         if (!isdigit(PhoneNumber[i]))
         {
-            if(NickName[i] == ' ' || NickName[i] == '\t')
+            if (NickName[i] == ' ' || NickName[i] == '\t')
                 continue;
             else
             {
@@ -107,35 +89,14 @@ if (PhoneNumber.empty())
         }
     }
 
-if (DarkestSecret.empty())
-{
-    std::cout << "Darkest secret is required" << std::endl;
-    f = 1;
-}
-
-    for(i = 0; DarkestSecret[i] != '\0'; i++)
+    if (DarkestSecret.empty())
     {
-        if (!isalpha(DarkestSecret[i]))
-        {
-            if(NickName[i] == ' ' || NickName[i] == '\t')
-                continue;
-            else
-            {
-                std::cout << "Darkest secret must contain only letters" << std::endl;
-                f = 1;
-                i = 0;
-                break;
-            }
-        }
+        std::cout << "Darkest secret is required" << std::endl;
+        f = 1;
     }
 
     if (f == 1)
         return;
-    if (ContactCount >= 8)
-    {
-        ContactCount = 8;
-        OldestContactIndex = 0;
-    }
     Contacts[OldestContactIndex].SetFirstName(FirstName);
     Contacts[OldestContactIndex].SetLastName(LastName);
     Contacts[OldestContactIndex].SetNickName(NickName);
@@ -146,7 +107,7 @@ if (DarkestSecret.empty())
     OldestContactIndex = (OldestContactIndex + 1) % 8;
 }
 
-std::string PhoneBook::TruncateString(std::string str) 
+std::string PhoneBook::TruncateString(std::string str)
 {
     if (str.length() > 10)
     {
@@ -170,19 +131,18 @@ void PhoneBook::DisplayContact()
     }
 }
 
-
 bool PhoneBook::DisplayContacts(std::string index)
 {
     int idx;
     std::stringstream ss(index);
     ss >> idx;
-    if ((ss.fail() && !ss.eof()) || (idx < 0 || idx >= ContactCount))
+    if ((ss.fail() && !ss.eof()) || ((!ss.fail() && !ss.eof())) || (idx < 0 || idx >= ContactCount))
     {
         std::cout << "The index is out of range" << std::endl;
         return false;
     }
     if (idx >= 0 && idx < ContactCount)
-    Contact Contact = Contacts[idx];
+        Contact Contact = Contacts[idx];
     std::cout << "First Name: " << Contacts[idx].GetFirstName() << std::endl;
     std::cout << "Last Name: " << Contacts[idx].GetLastName() << std::endl;
     std::cout << "Nickname: " << Contacts[idx].GetNickName() << std::endl;

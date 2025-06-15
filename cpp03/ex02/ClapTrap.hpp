@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:58:57 by csouita           #+#    #+#             */
-/*   Updated: 2025/05/16 21:24:49 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/16 23:18:45 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ public:
     ClapTrap(const ClapTrap &claptrap);
     ~ClapTrap();
 
-    ClapTrap &operator=(const ClapTrap &claptrap);
     void attack(const std::string &target);
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
+    ClapTrap &operator=(const ClapTrap &claptrap);
 };
 
 #endif

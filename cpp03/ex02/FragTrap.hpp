@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 21:20:40 by csouita           #+#    #+#             */
-/*   Updated: 2025/05/16 21:24:54 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/17 15:27:12 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ class FragTrap : public ClapTrap
 public:
     FragTrap();
     FragTrap(std::string name);
-    ~FragTrap();
     FragTrap(const FragTrap &FragTrap);
-    FragTrap &operator=(const FragTrap &FragTrap);
+    ~FragTrap();
     void highFivesGuys();
+    FragTrap &operator=(const FragTrap &FragTrap);
 };
 
 #endif

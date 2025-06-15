@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:02:02 by csouita           #+#    #+#             */
-/*   Updated: 2025/05/16 23:13:21 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/17 15:29:01 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ ClapTrap::ClapTrap(const ClapTrap &ClapTrap)
 {
     if (this == &ClapTrap)
         return;
+    *this = ClapTrap;
     std::cout << "Copy ClapTrap " << Name << " is copied" << std::endl;
 }
 

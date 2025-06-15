@@ -6,20 +6,20 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:33:00 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/20 23:43:08 by csouita          ###   ########.fr       */
+/*   Updated: 2025/04/12 20:06:53 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#include "Zombie.hpp"
 
 int main()
 {
     Zombie zombie;
-    Zombie *zombie2 = NULL;
+    Zombie *zombie2;
     zombie.SetName("Foo");
     zombie.announce();
-    zombie2 = zombie.newZombie("Bar");  // 3lach machi hadi zombie2->newZombie("Bar")
-    delete zombie2;
+    zombie2 = zombie.newZombie("Bar");
     zombie.randomChump("Baz");
+    delete zombie2;
     return 0;
 }

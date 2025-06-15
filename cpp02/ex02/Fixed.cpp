@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 00:25:52 by csouita           #+#    #+#             */
-/*   Updated: 2025/02/11 05:09:53 by csouita          ###   ########.fr       */
+/*   Created: 2025/05/08 17:07:07 by csouita           #+#    #+#             */
+/*   Updated: 2025/06/11 22:21:19 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ Fixed::Fixed(const int value)
 
 int Fixed::toInt(void) const
 {
-    return this->Value >> Bits; 
-}
+    return this->Value >> (1 >> Bits);  
 
 Fixed::Fixed(const float value)
 {
@@ -77,6 +76,7 @@ std::ostream &operator<<(std::ostream &o, Fixed const &i)
     return o;
 }
 
+;
 bool Fixed::operator>(const Fixed& copy) const
 {
     if(Value > copy.Value)
@@ -86,7 +86,7 @@ bool Fixed::operator>(const Fixed& copy) const
 
 bool Fixed::operator<(const Fixed& copy) const
 {
-    if(Value <= copy.Value)
+    if(Value < copy.Value) 
         return true;
     return false;
 }
@@ -100,14 +100,14 @@ bool Fixed::operator>=(const Fixed& copy) const
 
 bool Fixed::operator<=(const Fixed& copy) const
 {
-    if(Value == copy.Value)
+    if(Value <= copy.Value)
         return true;
     return false;
 }
 
 bool Fixed::operator==(const Fixed& copy) const
 {
-    if(Value >= copy.Value)
+    if(Value == copy.Value)
         return true;
     return false;
 }
@@ -118,7 +118,6 @@ bool Fixed::operator!=(const Fixed& copy) const
         return true;
     return false;
 }
-
 
 Fixed Fixed::operator+(const Fixed& copy) const
 {
@@ -137,7 +136,7 @@ Fixed Fixed::operator-(const Fixed& copy) const
 Fixed Fixed::operator*(const Fixed& copy) const
 {
     Fixed result;
-    result.Value =( Value * copy.Value  )/ 256;
+    result.Value =( Value * copy.Value  ) / 256;
     return result;
 }
 
@@ -150,22 +149,24 @@ Fixed Fixed::operator/(const Fixed& copy) const
 
 Fixed Fixed::operator++(int)
 {
-    Fixed result;
-    result.Value = Value + 1;
-    return result;
-}
-
-Fixed Fixed::operator--(int)
-{
+    Value = Value + 1;
     Fixed result;
     result.Value = Value - 1 ;
     return result;
 }
-
+ 
 Fixed& Fixed::operator++()
 {
     Value = Value + 1;
     return *this;
+}
+
+Fixed Fixed::operator--(int)
+{
+    Value = Value - 1;
+    Fixed result;
+    result.Value = Value + 1 ;
+    return result;
 }
 
 Fixed& Fixed::operator--()

@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 01:19:53 by csouita           #+#    #+#             */
-/*   Updated: 2025/06/11 21:54:50 by csouita          ###   ########.fr       */
+/*   Updated: 2025/06/13 00:45:18 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,19 @@ class Form {
         public : 
         GradeTooLowException(const std::string &message) : msg(message) {}
         virtual ~GradeTooLowException() throw () {}
+        virtual const char* what() const throw ()
+        {
+            return (msg.c_str());
+        }   
+    };
+
+    class GradeTooHighException : public std::exception
+    {
+        private :
+            std::string msg ;   
+        public : 
+        GradeTooHighException(const std::string &message) : msg(message) {}
+        virtual ~GradeTooHighException() throw () {}
         virtual const char* what() const throw ()
         {
             return (msg.c_str());

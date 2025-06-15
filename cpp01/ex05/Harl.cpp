@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:21:31 by csouita           #+#    #+#             */
-/*   Updated: 2025/01/27 01:15:48 by csouita          ###   ########.fr       */
+/*   Updated: 2025/04/13 19:16:46 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,4 @@ void Harl::complain(std::string level)
         }
     }
     std::cout << "Invalid level" << std::endl;
-    
 }
-

@@ -6,11 +6,12 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 01:00:39 by csouita           #+#    #+#             */
-/*   Updated: 2025/02/09 01:01:35 by csouita          ###   ########.fr       */
+/*   Updated: 2025/05/10 16:49:49 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
 int main( void )
 {
     Fixed a;
