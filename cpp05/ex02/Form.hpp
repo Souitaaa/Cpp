@@ -6,7 +6,7 @@
 /*   By: mongool <mongool@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 01:19:53 by csouita           #+#    #+#             */
-/*   Updated: 2025/06/17 00:04:08 by mongool          ###   ########.fr       */
+/*   Updated: 2025/06/17 22:43:41 by mongool          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ class Form {
         bool getIsSigned() const;
         int getRequiredGradeToSign() const;
         int getRequiredGradeToExecute() const;
-        virtual void beSigned(const Bureaucrat &bureaucrat) = 0;
-
+        virtual void beSigned(const Bureaucrat &bureaucrat) ;
+        virtual void execute(Bureaucrat const & executor) const = 0;
+        
         class GradeTooLowException : public std::exception
         {
         private :

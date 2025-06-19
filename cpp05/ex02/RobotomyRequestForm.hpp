@@ -6,7 +6,7 @@
 /*   By: mongool <mongool@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 00:06:52 by mongool           #+#    #+#             */
-/*   Updated: 2025/06/17 00:43:09 by mongool          ###   ########.fr       */
+/*   Updated: 2025/06/17 22:33:36 by mongool          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class RobotomyRequestForm : public Form {
         RobotomyRequestForm(std::string target);
         // ~RobotomyRequestForm();
         void beSigned(const Bureaucrat &bureaucrat);
+        void execute(const Bureaucrat &executor) const ;
         
 };
 #endif 

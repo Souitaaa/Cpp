@@ -15,20 +15,31 @@
 #include "Form.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main() {
     try {
-        Bureaucrat bureaucrat("Alice", 50);
-        ShrubberyCreationForm form("garden");
+        Bureaucrat bureaucrat("Alice", 1);
+        Bureaucrat bureaucrat2("SIMO", 79); // High enough grade to execute all forms
 
-        std::cout << "Before signing: " << form << std::endl;
-        form.beSigned(bureaucrat);
-        std::cout << "After signing: " << form << std::endl;
-        bureaucrat.signForm(form);
+        ShrubberyCreationForm shrubberyForm("garden");
         RobotomyRequestForm robotomyForm("Bob");
-        std::cout << "Before signing: " << robotomyForm << std::endl;
+        PresidentialPardonForm pardonForm("Charlie");
+
+        // Sign all forms
+        shrubberyForm.beSigned(bureaucrat);
         robotomyForm.beSigned(bureaucrat);
-        std::cout << "After signing : " << robotomyForm << std::endl;
+        pardonForm.beSigned(bureaucrat2);
+
+        // Execute all forms using executeForm
+        std::cout << "Executing ShrubberyCreationForm via executeForm:" << std::endl;
+        bureaucrat.executeForm(shrubberyForm);
+
+        std::cout << "Executing RobotomyRequestForm via executeForm:" << std::endl;
+        bureaucrat.executeForm(robotomyForm);
+
+        std::cout << "Executing PresidentialPardonForm via executeForm:" << std::endl;
+        bureaucrat.executeForm(pardonForm);
     } catch (const std::exception &e) {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
