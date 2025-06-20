@@ -24,9 +24,9 @@ int main() {
         Bureaucrat bureaucrat2("SIMO", 79); // High enough grade to execute all forms
 
         Intern someRandomIntern;
-        Form* shrubberyForm = someRandomIntern.makeForm("shrubbery creation", "garden");
-        Form* robotomyForm = someRandomIntern.makeForm("robotomy request", "Bob");
-        Form* pardonForm = someRandomIntern.makeForm("presidential pardon", "Charlie");
+        Form* shrubberyForm = someRandomIntern.makeForm("ShrubberyCreationForm", "garden");
+        Form* robotomyForm = someRandomIntern.makeForm("RobotomyRequestForm", "Bob");
+        Form* pardonForm = someRandomIntern.makeForm("PresidentialPardonForm", "Charlie");
 
         // Sign all forms
         shrubberyForm->beSigned(bureaucrat);
