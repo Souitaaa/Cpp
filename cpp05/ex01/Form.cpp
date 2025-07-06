@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 01:19:53 by csouita           #+#    #+#             */
-/*   Updated: 2025/06/11 22:18:12 by csouita          ###   ########.fr       */
+/*   Updated: 2025/07/03 23:10:28 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,14 @@ o << "Form Name: " << form.getName() << ", "
 
 std::string Form::getName() const {
     return Name;
+}
+
+Form::Form(const Form &other) : Name(other.Name), isSigned(other.isSigned), requiredGradeToSign(other.requiredGradeToSign), requiredGradeToExecute(other.requiredGradeToExecute) {
+}
+
+Form &Form::operator=(const Form &other) {
+    if (this != &other) {
+        isSigned = other.isSigned;
+    }
+    return *this;
 }

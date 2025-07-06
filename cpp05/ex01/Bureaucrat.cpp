@@ -45,20 +45,33 @@ void Bureaucrat::setGrade(int newGrade) {
         throw GradeTooHighException("Grade Too High");
     grade = newGrade;
 }
+
 void Bureaucrat::incrementGrade() {
     if (grade <= 1)
         throw GradeTooHighException("Cannot increment grade above 1.");
     grade--;
 }
+
 void Bureaucrat::decrementGrade() {
     if (grade >= 150)
         throw GradeTooLowException("Cannot decrement grade below 150.");
     grade++;
 }
+
 void Bureaucrat::signForm(const Form &form) const
 {
     if(form.getIsSigned() && this->getGrade() <= form.getRequiredGradeToSign())
         std::cout << this->getName() << " Signed " << form.getName() << std::endl ;
     else 
         std::cout <<  this->getName() << " couldn’t sign " << form.getName() << "Because " << "Grade Too Low" <<  std::endl;  
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &other) : name(other.name), grade(other.grade) {
+}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
+    if (this != &other) {
+        grade = other.grade;
+    }
+    return *this;
 }

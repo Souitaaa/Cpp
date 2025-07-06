@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 01:19:53 by csouita           #+#    #+#             */
-/*   Updated: 2025/06/13 00:45:18 by csouita          ###   ########.fr       */
+/*   Updated: 2025/07/03 23:10:35 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ class Form {
     public:
         Form(std::string name, int requiredGradeToSign, int requiredGradeToExecute);
         ~Form();
+        Form(const Form &other);
+        Form &operator=(const Form &other);
         std::string getName() const;
         bool getIsSigned() const;
         int getRequiredGradeToSign() const;

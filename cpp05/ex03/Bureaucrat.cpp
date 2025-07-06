@@ -55,7 +55,7 @@ void Bureaucrat::decrementGrade() {
         throw GradeTooLowException("Cannot decrement grade below 150.");
     grade++;
 }
-void Bureaucrat::signForm(const Form &form) const
+void Bureaucrat::signForm(const AForm &form) const
 {
     if(form.getIsSigned() && this->getGrade() <= form.getRequiredGradeToSign())
         std::cout << this->getName() << " Signed " << form.getName() << std::endl ;
@@ -63,7 +63,7 @@ void Bureaucrat::signForm(const Form &form) const
         std::cout <<  this->getName() << " couldn’t sign " << form.getName() << "Because " << "Grade Too Low" <<  std::endl;  
 }
 
-void Bureaucrat::executeForm(Form const & form) {
+void Bureaucrat::executeForm(AForm const & form) {
     try 
     {
         form.execute(*this);
@@ -73,4 +73,14 @@ void Bureaucrat::executeForm(Form const & form) {
     {
         std::cout << this->getName() << " couldn’t execute " << form.getName() << " because: " << e.what() << std::endl;
     }
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &other) : name(other.name), grade(other.grade) {
+}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
+    if (this != &other) {
+        grade = other.grade;
+    }
+    return *this;
 }

@@ -3,23 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mongool <mongool@student.42.fr>            +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 00:54:43 by mongool           #+#    #+#             */
-/*   Updated: 2025/06/20 02:14:48 by mongool          ###   ########.fr       */
+/*   Updated: 2025/07/03 23:17:35 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INTERN_HPP
 #define INTERN_HPP
 #include <string>
-class Form ;
+class AForm ;
 class Intern 
 {
     public :
         Intern();
         virtual ~Intern();
-        Form *makeForm(const std::string &Name , const std::string &target);
+        Intern(const Intern &other);
+        Intern &operator=(const Intern &other);
+        AForm *makeForm(const std::string &Name , const std::string &target);
         class  FormNotFoundException : public std::exception
         {
             private :

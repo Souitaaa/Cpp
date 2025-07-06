@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mongool <mongool@student.42.fr>            +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 00:14:31 by mongool           #+#    #+#             */
-/*   Updated: 2025/06/17 22:36:37 by mongool          ###   ########.fr       */
+/*   Updated: 2025/07/03 23:15:07 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) 
-    : Form("RobotomyRequestForm" , 72 , 45) , target(target)
+    : AForm("RobotomyRequestForm" , 72 , 45) , target(target)
 {
 }
 
 void RobotomyRequestForm::execute(const Bureaucrat &executor) const
 {
     if (!getIsSigned())
-        throw Form::GradeTooLowException("Form is not signed");
+        throw AForm::GradeTooLowException("Form is not signed");
     if (executor.getGrade() > getRequiredGradeToExecute())
-        throw Form::GradeTooLowException("Executor grade is too low");
+        throw AForm::GradeTooLowException("Executor grade is too low");
     std::cout << "Drilling noises for " << target << std::endl;
     std::srand(std::time(0));
     int number = std::rand();
@@ -35,8 +35,21 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const
         std::cout << "Robotomy failed for " << target << "." << std::endl;
 }
 
-
+RobotomyRequestForm::~RobotomyRequestForm() {}
 
 void RobotomyRequestForm::beSigned(const Bureaucrat &bureaucrat) {
-    Form::beSigned(bureaucrat);
+    AForm::beSigned(bureaucrat);
+}
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other) 
+    : AForm(other), target(other.target) 
+{
+}
+
+RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &other) {
+    if (this != &other) {
+        AForm::operator=(other);
+        target = other.target;
+    }
+    return *this;
 }

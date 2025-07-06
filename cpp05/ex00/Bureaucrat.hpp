@@ -16,45 +16,6 @@
 #include <stdexcept>
 #include <string> 
 
-// class GradeTooHighException : public std::exception
-// {
-// private:
-//     std::string msg;
-// public:
-//     GradeTooHighException(const std::string &message) : msg(message) {}
-//     virtual ~GradeTooHighException() throw() {}
-//     virtual const char *what() const throw()
-//     {
-//         return msg.c_str();
-//     }
-// };
-
-// class GradeTooLowException : public std::exception
-// {
-// private:
-//     std::string msg;
-// public:
-//     GradeTooLowException(const std::string &message) : msg(message) {}
-//     virtual ~GradeTooLowException() throw() {}
-//     virtual const char *what() const throw()
-//     {
-//         return msg.c_str();
-//     }
-// };
-
-// class BureaucratException : public std::exception
-// {
-// private:
-//     std::string msg;
-// public:
-//     BureaucratException(const std::string &message) : msg(message) {}
-//     virtual ~BureaucratException() throw() {}
-//     virtual const char *what() const throw()
-//     {
-//         return msg.c_str();
-//     }
-// };
-
 class Bureaucrat
 {
 private:
@@ -63,6 +24,8 @@ private:
 
 public:
     Bureaucrat(std::string name, int grade);
+    Bureaucrat(const Bureaucrat& other);
+    Bureaucrat& operator=(const Bureaucrat& other);
     ~Bureaucrat();
     std::string getName() const;
     int getGrade() const;

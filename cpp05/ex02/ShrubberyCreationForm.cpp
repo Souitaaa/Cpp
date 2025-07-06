@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mongool <mongool@student.42.fr>            +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 23:20:30 by mongool           #+#    #+#             */
-/*   Updated: 2025/06/17 22:31:23 by mongool          ###   ########.fr       */
+/*   Updated: 2025/07/03 23:15:30 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) 
-    : Form("ShrubberyCreationForm", 145, 137), target(target) 
+    : AForm("ShrubberyCreationForm", 145, 137), target(target) 
 {
     if (target.empty())
-        throw Form::GradeTooLowException("Target cannot be empty");
+        throw AForm::GradeTooLowException("Target cannot be empty");
     std::ofstream file((target + "_shrubbery").c_str());
         file << 
     "          &&& &&  & &&\n"
@@ -36,9 +36,9 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
 
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
     if (!getIsSigned())
-        throw Form::GradeTooLowException("Form is not signed");
+        throw AForm::GradeTooLowException("Form is not signed");
     if (executor.getGrade() > getRequiredGradeToExecute())
-        throw Form::GradeTooLowException("Executor grade is too low");
+        throw AForm::GradeTooLowException("Executor grade is too low");
     std::ofstream file((target + "_shrubbery").c_str());
     if (!file.is_open())
         throw std::runtime_error("Failed to open file for writing");
@@ -60,5 +60,18 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 void ShrubberyCreationForm::beSigned(const Bureaucrat &bureaucrat) {
-    Form::beSigned(bureaucrat);
+    AForm::beSigned(bureaucrat);
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) 
+    : AForm(other), target(other.target) 
+{
+}
+
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other) {
+    if (this != &other) {
+        AForm::operator=(other);
+        target = other.target;
+    }
+    return *this;
 }

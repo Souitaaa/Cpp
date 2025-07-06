@@ -12,7 +12,7 @@
 
 #include <iostream>
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
@@ -24,9 +24,9 @@ int main() {
         Bureaucrat bureaucrat2("SIMO", 79); // High enough grade to execute all forms
 
         Intern someRandomIntern;
-        Form* shrubberyForm = someRandomIntern.makeForm("ShrubberyCreationForm", "garden");
-        Form* robotomyForm = someRandomIntern.makeForm("RobotomyRequestForm", "Bob");
-        Form* pardonForm = someRandomIntern.makeForm("PresidentialPardonForm", "Charlie");
+        AForm* shrubberyForm = someRandomIntern.makeForm("ShrubberyCreationForm", "garden");
+        AForm* robotomyForm = someRandomIntern.makeForm("RobotomyRequestForm", "Bob");
+        AForm* pardonForm = someRandomIntern.makeForm("PresidentialPardonForm", "Charlie");
 
         // Sign all forms
         shrubberyForm->beSigned(bureaucrat);

@@ -45,14 +45,25 @@ void Bureaucrat::setGrade(int newGrade) {
         throw BureaucratException("Grade Too High");
     grade = newGrade;
 }
+
 void Bureaucrat::incrementGrade() {
     if (grade <= 1)
         throw BureaucratException("Cannot increment grade above 1.");
     grade--;
 }
+
 void Bureaucrat::decrementGrade() {
     if (grade >= 150)
         throw BureaucratException("Cannot decrement grade below 150.");
     grade++;
 }
 
+Bureaucrat::Bureaucrat(const Bureaucrat &other) : name(other.name), grade(other.grade) {
+}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
+    if (this != &other) {
+        grade = other.grade;
+    }
+    return *this;
+}
