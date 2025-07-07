@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 23:20:30 by mongool           #+#    #+#             */
-/*   Updated: 2025/07/03 23:20:20 by csouita          ###   ########.fr       */
+/*   Updated: 2025/07/07 17:47:24 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,6 @@
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) 
     : AForm("ShrubberyCreationForm", 145, 137), target(target) 
 {
-    if (target.empty())
-        throw AForm::GradeTooLowException("Target cannot be empty");
-    std::ofstream file((target + "_shrubbery").c_str());
-        file << 
-    "          &&& &&  & &&\n"
-    "      && &\\/&\\|& ()|/ @, &&\n"
-    "      &\\/(/&/&||/& /_/)_&/_&\n"
-    "   &() &\\/&|()|/&\\/ '%\" & ()\n"
-    "  &_\\_&&_\\ |& |&&/&__%_/_& &&\n"
-    "&&   && & &| &| /& & % ()& /&&\n"
-    " ()&_---()&\\&\\|&&-&&--%---()~\n"
-    "     &&     \\|||\n"
-    "             |||\n"
-    "             |||\n"
-    "             |||\n"
-    "       , -=-~  .-^- _\n";
-        file.close();
 }
 
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {

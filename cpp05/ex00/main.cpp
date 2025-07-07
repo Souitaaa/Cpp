@@ -23,16 +23,10 @@ int main()
         std::cout << "After decrement: " << bureaucrat << std::endl;
         bureaucrat.setGrade(150);
         std::cout << "After setting grade to 150: " << bureaucrat << std::endl;
-        bureaucrat.setGrade(0); // This will throw an exception
+        bureaucrat.setGrade(0);
     } 
-    catch (const Bureaucrat::BureaucratException &e) {
-        std::cerr << "Bureaucrat error: " << e.what() << std::endl;
-    }
-    catch (const Bureaucrat::GradeTooHighException &e) {
-        std::cerr << "Grade too high: " << e.what() << std::endl;
-    } 
-    catch (const Bureaucrat::GradeTooLowException &e) {
-        std::cerr << "Grade too low: " << e.what() << std::endl;
+        catch (std::exception &e) {
+        std::cerr << "Exception: " << e.what() << std::endl;
     }
     return 0;
 }

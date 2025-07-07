@@ -22,9 +22,7 @@ std::string Bureaucrat::getName() const {
 }
 
 int Bureaucrat::getGrade() const {
-    // if (grade <= 150 && grade >= 1)
         return grade;
-    // throw BureaucratException("Grade must be between 1 and 150.");
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name) {

@@ -21,19 +21,17 @@
 int main() {
     try {
         Bureaucrat bureaucrat("Alice", 1);
-        Bureaucrat bureaucrat2("SIMO", 79); // High enough grade to execute all forms
+        Bureaucrat bureaucrat2("SIMO", 79);
 
         Intern someRandomIntern;
         AForm* shrubberyForm = someRandomIntern.makeForm("ShrubberyCreationForm", "garden");
         AForm* robotomyForm = someRandomIntern.makeForm("RobotomyRequestForm", "Bob");
         AForm* pardonForm = someRandomIntern.makeForm("PresidentialPardonForm", "Charlie");
 
-        // Sign all forms
         shrubberyForm->beSigned(bureaucrat);
         robotomyForm->beSigned(bureaucrat);
         pardonForm->beSigned(bureaucrat);
 
-        // Execute all forms using executeForm
         std::cout << "Executing ShrubberyCreationForm via executeForm:" << std::endl;
         bureaucrat.executeForm(*shrubberyForm);
 
@@ -43,7 +41,6 @@ int main() {
         std::cout << "Executing PresidentialPardonForm via executeForm:" << std::endl;
         bureaucrat.executeForm(*pardonForm);
 
-        // Clean up
         delete shrubberyForm;
         delete robotomyForm;
         delete pardonForm;

@@ -20,18 +20,18 @@
 int main() {
     try {
         Bureaucrat bureaucrat("Alice", 1);
-        Bureaucrat bureaucrat2("SIMO", 79); // High enough grade to execute all forms
+        Bureaucrat bureaucrat2("SIMO", 79); 
 
         ShrubberyCreationForm shrubberyForm("garden");
         RobotomyRequestForm robotomyForm("Bob");
         PresidentialPardonForm pardonForm("Charlie");
 
-        // Sign all forms
+        
         shrubberyForm.beSigned(bureaucrat);
         robotomyForm.beSigned(bureaucrat);
         pardonForm.beSigned(bureaucrat2);
 
-        // Execute all forms using executeForm
+       
         std::cout << "Executing ShrubberyCreationForm via executeForm:" << std::endl;
         bureaucrat.executeForm(shrubberyForm);
 

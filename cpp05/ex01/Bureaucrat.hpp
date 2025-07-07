@@ -17,45 +17,6 @@
 #include <string> 
 #include "Form.hpp"
 
-// class GradeTooHighException : public std::exception
-// {
-// private:
-//     std::string msg;
-// public:
-//     GradeTooHighException(const std::string &message) : msg(message) {}
-//     virtual ~GradeTooHighException() throw() {}
-//     virtual const char *what() const throw()
-//     {
-//         return msg.c_str();
-//     }
-// };
-
-// class GradeTooLowException : public std::exception
-// {
-// private:
-//     std::string msg;
-// public:
-//     GradeTooLowException(const std::string &message) : msg(message) {}
-//     virtual ~GradeTooLowException() throw() {}
-//     virtual const char *what() const throw()
-//     {
-//         return msg.c_str();
-//     }
-// };
-
-// class BureaucratException : public std::exception
-// {
-// private:
-//     std::string msg;
-// public:
-//     BureaucratException(const std::string &message) : msg(message) {}
-//     virtual ~BureaucratException() throw() {}
-//     virtual const char *what() const throw()
-//     {
-//         return msg.c_str();
-//     }
-// };
-
 class Bureaucrat
 {
 private:
