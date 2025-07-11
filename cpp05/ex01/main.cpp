@@ -23,8 +23,8 @@ int main()
         std::cout << "After incrementing grade: " << bureaucrat << std::endl;
         bureaucrat.decrementGrade();
         std::cout << "After decrementing grade: " << bureaucrat << std::endl;
-        Bureaucrat bureaucrat2("l7ssen", 2);
-        std::cout << bureaucrat2 << std::endl; // This line should not be reached
+        Bureaucrat bureaucrat2("l7ssen", 44);
+        std::cout << bureaucrat2 << std::endl;
         form.beSigned(bureaucrat2);
         bureaucrat.signForm(form);
     }

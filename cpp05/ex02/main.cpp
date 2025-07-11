@@ -29,7 +29,7 @@ int main() {
         
         shrubberyForm.beSigned(bureaucrat);
         robotomyForm.beSigned(bureaucrat);
-        pardonForm.beSigned(bureaucrat2);
+        pardonForm.beSigned(bureaucrat);
 
        
         std::cout << "Executing ShrubberyCreationForm via executeForm:" << std::endl;
@@ -38,7 +38,7 @@ int main() {
         std::cout << "Executing RobotomyRequestForm via executeForm:" << std::endl;
         bureaucrat.executeForm(robotomyForm);
 
-        std::cout << "Executing PresidentialPardonForm via executeForm:" << std::endl;
+        std::cout << "Executing PresidentialPardonForm via executeFor  :" << std::endl;
         bureaucrat.executeForm(pardonForm);
     } catch (const std::exception &e) {
         std::cerr << "Exception: " << e.what() << std::endl;

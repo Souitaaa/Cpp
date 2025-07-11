@@ -16,13 +16,11 @@
 #include "ShrubberyCreationForm.hpp"
 
 Intern::Intern() 
-{
-    
+{   
 }
 
 Intern::~Intern() 
 {
-    
 }
 
 AForm *Intern::makeForm(const std::string &Name, const std::string &target)

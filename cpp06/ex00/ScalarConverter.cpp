@@ -17,6 +17,7 @@ ScalarConverter::ScalarConverter() {}
 
 ScalarConverter::~ScalarConverter() {}
 
-void ScalarConverter::convert(const std::string input) {
-        
-}  
+void ScalarConverter::convert(const std::string input) 
+{
+    (void)input;        
+}

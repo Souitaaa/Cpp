@@ -3,7 +3,7 @@ NAME = convert
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
 
-SRC =  
+SRC = main.cpp FindLeterall.cpp ScalarConverter.cpp   
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
