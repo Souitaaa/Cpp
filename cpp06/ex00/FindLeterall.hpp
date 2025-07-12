@@ -22,10 +22,8 @@ class FindLetterall {
     public:
         FindLetterall();
         ~FindLetterall();
-        int CharLeterall(const std::string& input);
-        bool IntLeterall(const std::string& input);
+        int IsChar(const std::string& input);
+        bool IsInt(const std::string& input);
         bool isDouble(const std::string& s);
-
-
 };
-#endif 
+#endif

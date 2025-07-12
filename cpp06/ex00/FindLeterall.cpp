@@ -14,7 +14,9 @@
 
 FindLetterall::FindLetterall() {}
 
-bool IntLeterall(const std::string& s)
+FindLetterall::~FindLetterall() {} 
+
+bool FindLetterall::IsInt(const std::string& s)
 {
     size_t i = 0;
     if (s[i] == '+' || s[i] == '-')
@@ -27,7 +29,7 @@ bool IntLeterall(const std::string& s)
     return true;
 }
 
-bool isDouble(const std::string& s) 
+bool FindLetterall::isDouble(const std::string& s) 
 {
     size_t i = 0;
     if (s[i] == '+' || s[i] == '-')
@@ -49,7 +51,7 @@ bool isDouble(const std::string& s)
     return hasDigit && hasDot;
 }
 
-int FindLetterall::CharLeterall(const std::string& input)
+int FindLetterall::IsChar(const std::string& input)
 {
     if(input.length() == 1 )
         return 1;
@@ -60,7 +62,7 @@ int FindLetterall::CharLeterall(const std::string& input)
         return 3;
     if (input.find('.') != std::string::npos)
         return 3;
-    if (IntLeterall(input))
+    if (IsInt(input))
         return 4;
     if(isDouble(input))
         return 5;
