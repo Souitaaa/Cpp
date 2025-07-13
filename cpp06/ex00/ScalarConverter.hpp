@@ -20,8 +20,11 @@
 
 
 class ScalarConverter {
-    public :
+    private:
         ScalarConverter();
+    public:
+        ScalarConverter(const ScalarConverter& other);
+        ScalarConverter& operator=(const ScalarConverter& other);
         ~ScalarConverter();
         static void convert(const std::string input);
 };

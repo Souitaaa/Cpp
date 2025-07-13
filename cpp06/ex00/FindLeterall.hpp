@@ -21,9 +21,13 @@
 class FindLetterall {
     public:
         FindLetterall();
+        FindLetterall(const FindLetterall& other);
+        FindLetterall& operator=(const FindLetterall& other);
         ~FindLetterall();
+
         int IsChar(const std::string& input);
         bool IsInt(const std::string& input);
         bool isDouble(const std::string& s);
 };
+
 #endif

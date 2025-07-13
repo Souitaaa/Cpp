@@ -16,6 +16,11 @@ FindLetterall::FindLetterall() {}
 
 FindLetterall::~FindLetterall() {} 
 
+FindLetterall::FindLetterall(const FindLetterall& other) {
+    (void)other;
+}
+
+
 bool FindLetterall::IsInt(const std::string& s)
 {
     size_t i = 0;
@@ -67,4 +72,10 @@ int FindLetterall::IsChar(const std::string& input)
     if(isDouble(input))
         return 5;
     return 99;
+}
+
+
+FindLetterall& FindLetterall::operator=(const FindLetterall& other) {
+    (void)other;
+    return *this;
 }
