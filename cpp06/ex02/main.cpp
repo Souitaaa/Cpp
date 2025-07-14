@@ -6,32 +6,24 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 00:52:45 by mongool           #+#    #+#             */
-/*   Updated: 2025/07/14 17:28:39 by csouita          ###   ########.fr       */
+/*   Updated: 2025/07/14 17:42:57 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
 
-// Function prototypes
-// Function prototype
 
 int main()
 {
-    // Generate a random Base-derived object
-    Base* ptr = generate();
-
-    // Identify using pointer
+    Base base;
+    
+    Base* ptr = base.generate();
     std::cout << "Identify (pointer): ";
-    identify(ptr);
+    base.identify(ptr);
 
-    // Identify using reference
     std::cout << "Identify (reference): ";
-    identify(*ptr);
+    base.identify(*ptr);
 
-    // Clean up
     delete ptr;
 
     return 0;

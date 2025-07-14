@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 00:52:45 by mongool           #+#    #+#             */
-/*   Updated: 2025/07/14 17:16:29 by csouita          ###   ########.fr       */
+/*   Updated: 2025/07/14 17:47:18 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,40 +41,30 @@ Base *Base::generate()
 void Base::identify(Base *p)
 {
     if(dynamic_cast<A*>(p))
-        std::cout << "The actual type is A" << std::endl;
-    else if (dynamic_cast<B *>(p))
-        std::cout << "The actual type is B" << std::endl;
-    else if (dynamic_cast<C *>(p))
-        std::cout << "The actual type is C" << std::endl;
-    else 
-        std::cout << "Failed to identify " << std::endl;
+        std::cout << "The actual type of the pointer is A" << std::endl;
+    if (dynamic_cast<B *>(p))
+        std::cout << "The actual type of the pointer is B" << std::endl;
+    if (dynamic_cast<C *>(p))
+        std::cout << "The actual type of the pointer is C" << std::endl;
 }
 
 void Base::identify(Base& p)
 {
     try {
         (void)dynamic_cast<A&>(p);
-        std::cout << "The actual type is A" << std::endl;
-    }
-    catch (...)
-    {
-        std::cout << "is not type A" << std::endl;
-    }
+        std::cout << "The actual type of the reference is A" << std::endl;
+        return;
+    } catch (...) {}
+
     try {
         (void)dynamic_cast<B&>(p);
-            std::cout << "The actual type is B" << std::endl;
-    }
-    catch (...)
-    {
-        std::cout << "is not type B" << std::endl;
-    }
+        std::cout << "The actual type of the reference is B" << std::endl;
+        return;
+    } catch (...) {}
+
     try {
         (void)dynamic_cast<C&>(p);
-            std::cout << "The actual type is C" << std::endl;
-    }
-    catch (...)
-    {
-        std::cout << "is not type C" << std::endl;
-    }
-        
+        std::cout << "The actual type of the reference is C" << std::endl;
+        return;
+    } catch (...) {}
 }

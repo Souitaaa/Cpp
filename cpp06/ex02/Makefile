@@ -1,7 +1,7 @@
-NAME = convert
+NAME = identify
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -std=c++98 #-g3 -fsanitize=address
 
 SRC = main.cpp Base.cpp A.cpp B.cpp C.cpp
 OBJ = $(SRC:.cpp=.o)
