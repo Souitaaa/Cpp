@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:54:34 by csouita           #+#    #+#             */
-/*   Updated: 2025/07/13 20:36:17 by csouita          ###   ########.fr       */
+/*   Updated: 2025/07/14 17:51:43 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 #include "Data.hpp"
 
 class Serializer {
-    public :
+    private:
         Serializer();
+    public :
         ~Serializer();
         static uintptr_t serialize(Data* ptr);
         static Data* deserialize(uintptr_t raw);
