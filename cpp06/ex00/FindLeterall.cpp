@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
+/*   FindLeterall.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 00:52:45 by mongool           #+#    #+#             */
-/*   Updated: 2025/07/09 16:52:15 by csouita          ###   ########.fr       */
+/*   Updated: 2025/07/15 18:52:45 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,9 @@ int FindLetterall::IsChar(const std::string& input)
 {
     if(input.length() == 1 )
         return 1;
-    else if (input == "nan" || input == "+inf" || input == "-inf")
-        return 2;
     size_t pos = input.find('f');
     if (pos != std::string::npos)
-        return 3;
+        return 6;
     if (input.find('.') != std::string::npos)
         return 3;
     if (IsInt(input))

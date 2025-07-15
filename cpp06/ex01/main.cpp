@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 20:32:43 by csouita           #+#    #+#             */
-/*   Updated: 2025/07/13 21:24:05 by csouita          ###   ########.fr       */
+/*   Updated: 2025/07/15 18:31:00 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int main()
     {
         std::cout << "Pointers are equal!" << std::endl;
         std::cout << ptr->name << std::endl;
+        std::cout << d.name << std::endl;   
     }
     else
         std::cout << "serialize is not working!" << std::endl;
