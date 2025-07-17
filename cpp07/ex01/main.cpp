@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 20:32:43 by csouita           #+#    #+#             */
-/*   Updated: 2025/07/17 17:20:50 by csouita          ###   ########.fr       */
+/*   Updated: 2025/07/17 17:30:02 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-#define ITER_HPP
-#include <iostream>
 
-template<typename T>
-void iter(T *array , size_t lenght , void (*fun)(T&))
+#include "iter.hpp"
+void increment(int& n)
 {
-    for(size_t i = 0 ; i < lenght ; i++)
-        fun(array[i]);
+    n += 1;
 }
-#endif
+template<typename T>
+void print(T& n)
+{
+    std::cout << n << std::endl;
+}
+
+void toUpperCase(char& c)
+{
+    c = std::toupper(c);
+}
+
+int main()
+{
+    char arrChar[3] = {'a', 'b', 'c'};
+    iter(arrChar, 3, toUpperCase);
+    iter(arrChar, 3, print);
+    int arr[3] = {1, 2, 3};
+    iter(arr, 3, increment);
+    iter(arr, 3, print); 
+}
