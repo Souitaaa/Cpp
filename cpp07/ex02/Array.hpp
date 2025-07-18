@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 20:32:43 by csouita           #+#    #+#             */
-/*   Updated: 2025/07/18 18:24:43 by csouita          ###   ########.fr       */
+/*   Updated: 2025/07/18 19:26:46 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@ class Array {
         Array(unsigned int n);
         Array(const Array &copy);
         Array &operator=(const Array &array);
-        Array &operator[](const Array &array);
-        unsigned int size();
-
+        T &operator[](unsigned int index);
+        T size();
         ~Array();
 };
+
+#include "Array.tpp"
 #endif 
         

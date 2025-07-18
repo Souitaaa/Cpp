@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 20:32:43 by csouita           #+#    #+#             */
-/*   Updated: 2025/07/18 18:31:30 by csouita          ###   ########.fr       */
+/*   Updated: 2025/07/18 19:27:29 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ Array<T> &Array<T>::operator=(const Array &array)
 }
 
 template <typename T>
-Array<T> &Array<T>::operator[](const Array &array)
+T &Array<T>::operator[](unsigned int array)
 {
     if (array.N >= N)
         throw std::out_of_range("Index out of range");
@@ -67,7 +67,7 @@ Array<T> &Array<T>::operator[](const Array &array)
 }
 
 template <typename T>
-unsigned int Array<T>::size() 
+T Array<T>::size() 
 {
     return N;
 }
