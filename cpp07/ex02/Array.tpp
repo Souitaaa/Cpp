@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 20:32:43 by csouita           #+#    #+#             */
-/*   Updated: 2025/07/18 20:16:55 by csouita          ###   ########.fr       */
+/*   Updated: 2025/07/19 00:54:41 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,10 @@ Array<T>::Array(const Array &copy)
         array = NULL;
     else 
     {
-        this->array = new T[N];
+        array = new T[N];
         for (unsigned int i = 0; i < N; ++i)
-            this->array[i] = copy.array[i];
+            array[i] = copy.array[i];
     }
-    return *this;
 }
 
 template <typename T>
@@ -59,15 +58,14 @@ Array<T> &Array<T>::operator=(const Array &array)
 }
 
 template <typename T>
-T &Array<T>::operator[](unsigned int array)
+T &Array<T>::operator[](unsigned int index) 
 {
-    if (array >= N)
+    if (index >= N)
         throw std::out_of_range("Index out of range");
-    return this->array[array];
+    return array[index];
 }
-
 template <typename T>
-T Array<T>::size() 
+T Array<T>::size() const
 {
     return N;
 }

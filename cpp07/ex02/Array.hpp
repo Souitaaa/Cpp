@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 20:32:43 by csouita           #+#    #+#             */
-/*   Updated: 2025/07/18 19:26:46 by csouita          ###   ########.fr       */
+/*   Updated: 2025/07/19 00:53:01 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <stdexcept>
+#include <stdlib.h>
 
 template <typename T>
 class Array {
@@ -27,7 +28,7 @@ class Array {
         Array(const Array &copy);
         Array &operator=(const Array &array);
         T &operator[](unsigned int index);
-        T size();
+        T size()const;
         ~Array();
 };
 
