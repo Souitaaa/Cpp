@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 20:32:43 by csouita           #+#    #+#             */
-/*   Updated: 2025/07/19 00:53:01 by csouita          ###   ########.fr       */
+/*   Updated: 2025/07/19 18:38:26 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ class Array {
         Array(const Array &copy);
         Array &operator=(const Array &array);
         T &operator[](unsigned int index);
-        T size()const;
+        const T &operator[](unsigned int index) const;
+        unsigned int size()const;
         ~Array();
 };
 

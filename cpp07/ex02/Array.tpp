@@ -6,14 +6,14 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 20:32:43 by csouita           #+#    #+#             */
-/*   Updated: 2025/07/19 00:54:41 by csouita          ###   ########.fr       */
+/*   Updated: 2025/07/19 18:38:48 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
 
 template <typename T>
-Array<T>::Array() : array(NULL) {}
+Array<T>::Array() : array(NULL) , N(0) {}
 
 template <typename T>
 Array<T>::Array(unsigned int n) : N(n) 
@@ -64,8 +64,17 @@ T &Array<T>::operator[](unsigned int index)
         throw std::out_of_range("Index out of range");
     return array[index];
 }
+
 template <typename T>
-T Array<T>::size() const
+const T &Array<T>::operator[](unsigned int index) const
+{
+    if (index >= N)
+        throw std::out_of_range("Index out of range");
+    return array[index];
+}
+
+template <typename T>
+unsigned int Array<T>::size() const
 {
     return N;
 }
