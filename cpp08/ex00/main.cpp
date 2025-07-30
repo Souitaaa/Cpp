@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 00:52:45 by mongool           #+#    #+#             */
-/*   Updated: 2025/07/26 17:36:43 by csouita          ###   ########.fr       */
+/*   Updated: 2025/07/30 21:12:34 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(void)
 	std::vector<int> v;
 	for (int i = 0; i < 10; i++)
 		v.push_back(i);
-
+		
 	try
 	{
 		easyfind(v, 5);
