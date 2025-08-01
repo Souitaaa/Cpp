@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 00:52:45 by mongool           #+#    #+#             */
-/*   Updated: 2025/07/30 20:54:20 by csouita          ###   ########.fr       */
+/*   Updated: 2025/07/31 16:06:10 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ unsigned int Span::shortestSpan() const
     {
         unsigned int temp = sortedVec[i] - sortedVec[i - 1];
         if(minSpan > temp)
-            minSpan = temp; 
+            minSpan = temp;
     }
     return minSpan;
 }
@@ -69,5 +69,3 @@ void Span::addRange(std::vector<int>::iterator begin , std::vector<int>::iterato
         throw std::runtime_error("Values are bigger than size of vector ");
     numbers.insert(numbers.end() , begin , end);
 }
-
-
