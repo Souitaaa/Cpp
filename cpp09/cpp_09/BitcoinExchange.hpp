@@ -12,11 +12,11 @@
 class bitcoin
 {
     private :
-        std::map<int , int> input;
+        std::map<std::string, float> input;
         struct Data
         {
             std::string date;
-            double       value;
+            float       value;
         }      data;
     public :
         bitcoin();
@@ -24,6 +24,7 @@ class bitcoin
         void parseFile(std::string input);
         int dateAndValue(std::string line);
         int isDateValid(std::string date);
-
+        float extractValues();
+        void printMap();
 };
 #endif 

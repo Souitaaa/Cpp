@@ -12,6 +12,7 @@ int main(int ac, char **av)
         }
         bitcoin btc;
         btc.parseFile(av[1]);
+        // btc.printMap();
         // std::cout << data.date << std::endl;
         return 0;
     }
