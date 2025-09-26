@@ -2,6 +2,20 @@
 
 bitcoin::bitcoin()
 {
+    std::ifstream ofile("data.csv");
+    if(!ofile.is_open())
+        std::cerr << "Error: could not open file " <<std::endl;
+    std::string line;
+    while(std::getline(ofile, line))
+    {
+        size_t pos = line.find(',');
+        if (pos == std::string::npos)
+            continue;
+        std::string date = line.substr(0, pos);
+        std::string value = line.substr(pos + 1);
+        this->input.insert(std::make_pair(date, atof(value.c_str())));
+    }
+    ofile.close();
 }
 
 bitcoin::~bitcoin()
@@ -28,6 +42,7 @@ void bitcoin::parseFile(std::string input)
         if(dateAndValue(line))
             return;
     }
+    file.close();
 }
 int bitcoin::isDateValid(std::string date)
 {
@@ -60,7 +75,6 @@ int bitcoin::isDateValid(std::string date)
     }
     return flag;
 }
-
 int bitcoin::dateAndValue(std::string line)
 {
     bitcoin::Data data;
@@ -88,9 +102,24 @@ int bitcoin::dateAndValue(std::string line)
                 flag = 1;
             }
             if(flag != 1)
-                std::cout << data.date << " => " << data.value << std::endl;
+            {
+                std::map<std::string, float>::iterator it = input.lower_bound(data.date);
+                if (it == input.end() || (it != input.begin() && it->first != data.date))
+                    --it;
+                float result = data.value * it->second;
+                std::cout << data.date << " => " << data.value << " = " << result << std::endl;
+            }
         }
         return 0;
     }
     return 0;
+}
+
+void bitcoin::printMap()
+{
+	std::map<std::string, float>::const_iterator it;
+	for (it = input.begin(); it != input.end(); ++it)
+	{
+		std::cout << it->first << " => " << it->second << std::endl;
+	}
 }
