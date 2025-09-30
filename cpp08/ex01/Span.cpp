@@ -6,12 +6,12 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 00:52:45 by mongool           #+#    #+#             */
-/*   Updated: 2025/07/31 16:06:10 by csouita          ###   ########.fr       */
+/*   Updated: 2025/08/02 15:56:04 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
-#include <limits>
+#include <climits>
 
 Span::Span(unsigned int n) : N(n) {}
 
@@ -27,7 +27,7 @@ void Span::addNumber(int number)
 
 unsigned int Span::shortestSpan() const
 {
-    unsigned int minSpan = std::numeric_limits<unsigned int>::max();
+    unsigned int minSpan = UINT_MAX;
     if(numbers.size() < 2)
         throw std::runtime_error("requires at least 2 numbers");
     std::vector<int> sortedVec(numbers);
