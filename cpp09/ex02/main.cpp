@@ -23,7 +23,7 @@ int main(int ac, char *av[])
         return 1;
     }
     
-    for(int j = 1; j < ac ; j++) // parsing args
+    for(int j = 1; j < ac ; j++) // parsing args  and fill 
     {
         std::stringstream ss(av[j]);
         if (!(ss >> i))
@@ -33,7 +33,7 @@ int main(int ac, char *av[])
         }
         if (ss >> c)
         {
-            std::cout << "still" << std::endl;
+            std::cout << "still has" << std::endl;
             return 1;
         }
         if(i < 0 || i > 2147483647)
@@ -127,30 +127,6 @@ int main(int ac, char *av[])
     for(int i = 0; i < (int)longer.size(); i++) // Add all longer elements
     {
         mainChain.push_back(longer[i]);
-    }
-    std::vector<int> js = Jacobsthal(loser.size());// 0 0 1 3 5 11
-    if(js.size() > 3)
-    {
-        if(js[0] == 0)
-            js.erase(js.begin());
-        if (js[0] == 1)
-            js.erase(js.begin());
-    }//3 5 11
-    int start = 0;
-    int end = 0;//1
-    for (size_t i = 0; i < js.size(); i++)
-    {
-        start = js[i];// = 3
-        for (; start > end; start--)
-        {
-            int idx = start - 1; // 2
-            if (idx >= 0 && static_cast<size_t>(idx) < loser.size())
-            {
-                std::vector<int>::iterator it = std::lower_bound(winners.begin(), winners.end(), loser[idx]);
-                winners.insert(it, loser[idx]);
-            }
-        }
-        end = js[i]; // 1
     }
     
     std::cout << "\nMain chain: ";
