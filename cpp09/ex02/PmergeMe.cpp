@@ -1,5 +1,23 @@
 #include "PmergeMe.hpp"
 
+PmergeMe::PmergeMe(): _hasLeftover(0) {}
+PmergeMe::~PmergeMe() {}
+PmergeMe::PmergeMe(const PmergeMe &other) { *this = other; }
+PmergeMe &PmergeMe::operator=(const PmergeMe &other)
+{
+    if (this != &other)
+        this->_hasLeftover = other._hasLeftover;
+    return *this;
+}
+void PmergeMe::setHasLeftover(int hasLeftover)
+{
+    this->_hasLeftover = hasLeftover;
+}
+
+int PmergeMe::getHasLeftover() const
+{
+    return this->_hasLeftover;
+}
 
 void PmergeMe::mergeSort(std::vector<std::pair<int, int> >& array)
 {
@@ -26,7 +44,6 @@ void PmergeMe::merge(std::vector<std::pair<int, int> >& leftarray,
 
     while(l < leftsize && r < rightsize)
     {
-        // Compare based on the first element (larger element) of each pair
         if(leftarray[l].first < rightarray[r].first)
             array[i++] = leftarray[l++];
         else
@@ -36,4 +53,75 @@ void PmergeMe::merge(std::vector<std::pair<int, int> >& leftarray,
         array[i++] = leftarray[l++];
     while(r < rightsize)
         array[i++] = rightarray[r++];
+}
+
+int PmergeMe::chekArgs(int ac, char *av[], std::vector<int> &v, std::deque<int> &d)
+{
+    long i ;
+    char c;
+    if(ac < 2)
+    {
+        std::cout << "Error : entrer args" << std::endl;
+        return 1;
+    }
+    
+    for(int j = 1; j < ac ; j++) // parsing args
+    {
+        std::stringstream ss(av[j]);
+        if (!(ss >> i))
+        {
+            std::cout << "Error" << std::endl;
+            return 1;
+        }
+        if (ss >> c)
+        {
+            std::cout << "still" << std::endl;
+            return 1;
+        }
+        if(i < 0 || i > 2147483647)
+        {
+            std::cout << "Error" << std::endl;
+            return 1;
+        }
+        v.push_back(i);
+        d.push_back(i);
+    }
+    return 0;
+}
+
+void PmergeMe::checkLeftover(std::vector<int> &v, std::deque<int> &d,int &vleftover, int &dleftover)
+{
+    PmergeMe p;
+    if (v.size() % 2 != 0)
+    {
+        this->setHasLeftover(1);
+        vleftover = v.back();
+        v.pop_back();  
+        dleftover = d.back();
+        d.pop_back();
+    }
+}
+
+void PmergeMe::fillAndSortPairs(std::vector<int> &v, std::deque<int> &d, std::vector<std::pair<int, int> > &vpair, std::deque<std::pair<int, int> > &dpair)
+{
+    for(int i = 0 ; i < (int)v.size(); i += 2) // filling pair vectors and deques
+    {
+        vpair.push_back(std::make_pair(v[i], v[i + 1]));
+        dpair.push_back(std::make_pair(d[i], d[i + 1]));
+    }
+    for(int i = 0 ; i < (int)vpair.size(); i++) // sort each pair internally
+    {
+        if(vpair[i].first < vpair[i].second)
+        {
+            std::swap(vpair[i].first, vpair[i].second);
+        }
+    }
+    
+    for(int i = 0 ; i < (int)dpair.size(); i++) // sort each deque pair internally (biggest on the left)
+    {
+        if(dpair[i].first < dpair[i].second)
+        {
+            std::swap(dpair[i].first, dpair[i].second);
+        }
+    }
 }
