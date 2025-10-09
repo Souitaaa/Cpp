@@ -55,6 +55,42 @@ void PmergeMe::merge(std::vector<std::pair<int, int> >& leftarray,
         array[i++] = rightarray[r++];
 }
 
+void PmergeMe::mergeSort(std::deque<std::pair<int, int> >& array)
+{
+    int length = array.size();
+    if(length <= 1)
+        return;
+    
+    int mid = length / 2;
+    std::deque<std::pair<int, int> > leftarray(array.begin(), array.begin() + mid);
+    std::deque<std::pair<int, int> > rightarray(array.begin() + mid, array.end());
+
+    mergeSort(leftarray);
+    mergeSort(rightarray);
+    merge(leftarray, rightarray, array);
+}
+
+void PmergeMe::merge(std::deque<std::pair<int, int> >& leftarray, 
+                std::deque<std::pair<int, int> >& rightarray, 
+                std::deque<std::pair<int, int> >& array)
+{
+    int leftsize = leftarray.size();
+    int rightsize = rightarray.size();
+    int i = 0, l = 0, r = 0;
+
+    while(l < leftsize && r < rightsize)
+    {
+        if(leftarray[l].first < rightarray[r].first)
+            array[i++] = leftarray[l++];
+        else
+            array[i++] = rightarray[r++];
+    }
+    while(l < leftsize)
+        array[i++] = leftarray[l++];
+    while(r < rightsize)
+        array[i++] = rightarray[r++];
+}
+
 int PmergeMe::chekArgs(int ac, char *av[], std::vector<int> &v, std::deque<int> &d)
 {
     long i ;

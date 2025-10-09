@@ -23,6 +23,10 @@ class PmergeMe
         void merge(std::vector<std::pair<int, int> >& leftarray, 
                         std::vector<std::pair<int, int> >& rightarray,                       
                         std::vector<std::pair<int, int> >& array);
+        void mergeSort(std::deque<std::pair<int, int> >& array);
+        void merge(std::deque<std::pair<int, int> >& leftarray, 
+                        std::vector<std::pair<int, int> >& rightarray,                       
+                        std::vector<std::pair<int, int> >& array);
         int chekArgs(int ac, char *av[], std::vector<int> &v, std::deque<int> &d);
         void checkLeftover(std::vector<int> &v, std::deque<int> &d, int &vleftover, int &dleftover);
         void fillAndSortPairs(std::vector<int> &v, std::deque<int> &d, std::vector<std::pair<int, int> > &vpair, std::deque<std::pair<int, int> > &dpair);

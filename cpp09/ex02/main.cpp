@@ -33,8 +33,10 @@ int main(int ac, char *av[])
     int dleftover = 0;
     std::vector<int> v;
     std::deque<int> d;
-    std::vector<int> longer;
-    std::vector<int> smaller;
+    std::vector<int> vlonger;
+    std::vector<int> vsmaller;
+    std::deque<int> dlonger;
+    std::deque<int> dsmaller;
     std::vector<std::pair<int, int> > vpair;
     std::deque<std::pair<int, int> > dpair;
     PmergeMe p;
@@ -45,17 +47,28 @@ int main(int ac, char *av[])
     p.checkLeftover(v, d, vleftover, dleftover);
     p.fillAndSortPairs(v, d, vpair, dpair);
     p.mergeSort(vpair);
+    p.mergeSort(dpair);
     
     for(int i = 0; i < (int)vpair.size(); i++)
     {
-        longer.push_back(vpair[i].first);
-        smaller.push_back(vpair[i].second);
+        vlonger.push_back(vpair[i].first);
+        vsmaller.push_back(vpair[i].second);
     }
 
-    if(!smaller.empty()) // Insert first smaller at the beginning
-        longer.insert(longer.begin(), smaller[0]);
+    for(int i = 0; i < (int)dpair.size(); i++)
+    {
+        dlonger.push_back(dpair[i].first);
+        dsmaller.push_back(dpair[i].second);
+    }
 
-    std::vector<int> js = Jacobsthal(smaller.size()); // Generate Jacobsthal sequence
+
+    if(!vsmaller.empty()) // Insert first vsmaller at the beginning
+    {
+        vlonger.insert(vlonger.begin(), vsmaller[0]);
+        dlonger.insert(dlonger.begin(), dsmaller[0]);
+    }
+
+    std::vector<int> js = Jacobsthal(vsmaller.size()); // Generate Jacobsthal sequence
     
     
     if(js.size() > 2) // Remove 0 and 1
@@ -68,40 +81,52 @@ int main(int ac, char *av[])
     
     
     int start = 0;
-    int end = 1; // Start from 1 because we already inserted smaller[0]
+    int end = 1; // Start from 1 because we already inserted vsmaller[0]
     
-    for (size_t i = 0; i < js.size(); i++) // Insert remaining smaller using Jacobsthal sequence
+    for (size_t i = 0; i < js.size(); i++) // Insert remaining vsmaller using Jacobsthal sequence
     {
         start = js[i];
         for (; start > end; start--)
         {
             int idx = start - 1;
-            if (idx >= 0 && static_cast<size_t>(idx) < smaller.size())
+            if (idx >= 0 && static_cast<size_t>(idx) < vsmaller.size())
             {
-                std::vector<int>::iterator it = std::lower_bound(longer.begin(), longer.end(), smaller[idx]);
-                longer.insert(it, smaller[idx]);
+                std::vector<int>::iterator it = std::lower_bound(vlonger.begin(), vlonger.end(), vsmaller[idx]);
+                vlonger.insert(it, vsmaller[idx]);
+                std::deque<int>::iterator dit = std::lower_bound(dlonger.begin(), dlonger.end(), dsmaller[idx]);
+                dlonger.insert(dit, dsmaller[idx]);
             }
         }
         end = js[i];
     }
     
-    for (size_t i = end; i < smaller.size(); i++)
+    for (size_t i = end; i < vsmaller.size(); i++)
     {
-        std::vector<int>::iterator it = std::lower_bound(longer.begin(), longer.end(), smaller[i]);
-        longer.insert(it, smaller[i]);
+        std::vector<int>::iterator it = std::lower_bound(vlonger.begin(), vlonger.end(), vsmaller[i]);
+        vlonger.insert(it, vsmaller[i]);
+        std::deque<int>::iterator dit = std::lower_bound(dlonger.begin(), dlonger.end(), dsmaller[i]);
+        dlonger.insert(dit, dsmaller[i]);
     }
     
     if(p.getHasLeftover())
     {
 
-        std::vector<int>::iterator it = std::lower_bound(longer.begin(), longer.end(), vleftover);
-        longer.insert(it, vleftover);
+        std::vector<int>::iterator it = std::lower_bound(vlonger.begin(), vlonger.end(), vleftover);
+        vlonger.insert(it, vleftover);
+        std::deque<int>::iterator dit = std::lower_bound(dlonger.begin(), dlonger.end(), dleftover);
+        dlonger.insert(dit, dleftover);
     }
     
     std::cout << "\n\nFinal sorted sequence: ";
-    for(int i = 0; i < (int)longer.size(); i++)
+    for(int i = 0; i < (int)vlonger.size(); i++)
     {
-        std::cout << longer[i] << " ";
+        std::cout << vlonger[i] << " ";
+    }
+
+    std::cout << "\n\nFinal sorted sequence: ";
+    for(int i = 0; i < (int)dlonger.size(); i++)
+    {
+        std::cout << dlonger[i] << " ";
     }
     std::cout << std::endl;
     if(p.getHasLeftover())
