@@ -25,11 +25,13 @@ class PmergeMe
                         std::vector<std::pair<int, int> >& array);
         void mergeSort(std::deque<std::pair<int, int> >& array);
         void merge(std::deque<std::pair<int, int> >& leftarray, 
-                        std::vector<std::pair<int, int> >& rightarray,                       
-                        std::vector<std::pair<int, int> >& array);
+                        std::deque<std::pair<int, int> >& rightarray,                       
+                        std::deque<std::pair<int, int> >& array);
         int chekArgs(int ac, char *av[], std::vector<int> &v, std::deque<int> &d);
         void checkLeftover(std::vector<int> &v, std::deque<int> &d, int &vleftover, int &dleftover);
         void fillAndSortPairs(std::vector<int> &v, std::deque<int> &d, std::vector<std::pair<int, int> > &vpair, std::deque<std::pair<int, int> > &dpair);
+        void separatePairs(std::vector<std::pair<int, int> > &vpair, std::deque<std::pair<int, int> > &dpair, std::vector<int> &vlonger, std::vector<int> &vsmaller, std::deque<int> &dlonger, std::deque<int> &dsmaller);
+        void binaryInsert(std::vector<int> &vsmaller, std::vector<int> &vlonger, std::deque<int> &dsmaller, std::deque<int> &dlonger, int start);
 };
 
 #endif  

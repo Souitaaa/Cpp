@@ -48,25 +48,7 @@ int main(int ac, char *av[])
     p.fillAndSortPairs(v, d, vpair, dpair);
     p.mergeSort(vpair);
     p.mergeSort(dpair);
-    
-    for(int i = 0; i < (int)vpair.size(); i++)
-    {
-        vlonger.push_back(vpair[i].first);
-        vsmaller.push_back(vpair[i].second);
-    }
-
-    for(int i = 0; i < (int)dpair.size(); i++)
-    {
-        dlonger.push_back(dpair[i].first);
-        dsmaller.push_back(dpair[i].second);
-    }
-
-
-    if(!vsmaller.empty()) // Insert first vsmaller at the beginning
-    {
-        vlonger.insert(vlonger.begin(), vsmaller[0]);
-        dlonger.insert(dlonger.begin(), dsmaller[0]);
-    }
+    p.separatePairs(vpair, dpair, vlonger, vsmaller, dlonger, dsmaller);
 
     std::vector<int> js = Jacobsthal(vsmaller.size()); // Generate Jacobsthal sequence
     
@@ -78,7 +60,6 @@ int main(int ac, char *av[])
         if(js.size() > 0 && js[0] == 1)
             js.erase(js.begin());
     }
-    
     
     int start = 0;
     int end = 1; // Start from 1 because we already inserted vsmaller[0]
@@ -99,24 +80,8 @@ int main(int ac, char *av[])
         }
         end = js[i];
     }
-    
-    for (size_t i = end; i < vsmaller.size(); i++)
-    {
-        std::vector<int>::iterator it = std::lower_bound(vlonger.begin(), vlonger.end(), vsmaller[i]);
-        vlonger.insert(it, vsmaller[i]);
-        std::deque<int>::iterator dit = std::lower_bound(dlonger.begin(), dlonger.end(), dsmaller[i]);
-        dlonger.insert(dit, dsmaller[i]);
-    }
-    
-    if(p.getHasLeftover())
-    {
 
-        std::vector<int>::iterator it = std::lower_bound(vlonger.begin(), vlonger.end(), vleftover);
-        vlonger.insert(it, vleftover);
-        std::deque<int>::iterator dit = std::lower_bound(dlonger.begin(), dlonger.end(), dleftover);
-        dlonger.insert(dit, dleftover);
-    }
-    
+    p.binaryInsert(vsmaller, vlonger, dsmaller, dlonger, end);    
     std::cout << "\n\nFinal sorted sequence: ";
     for(int i = 0; i < (int)vlonger.size(); i++)
     {

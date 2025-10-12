@@ -161,3 +161,43 @@ void PmergeMe::fillAndSortPairs(std::vector<int> &v, std::deque<int> &d, std::ve
         }
     }
 }
+
+void PmergeMe::separatePairs(std::vector<std::pair<int, int> > &vpair, std::deque<std::pair<int, int> > &dpair, std::vector<int> &vlonger, std::vector<int> &vsmaller, std::deque<int> &dlonger, std::deque<int> &dsmaller)
+{
+    for(int i = 0; i < (int)vpair.size(); i++)
+    {
+        vlonger.push_back(vpair[i].first);
+        vsmaller.push_back(vpair[i].second);
+    }
+
+    for(int i = 0; i < (int)dpair.size(); i++)
+    {
+        dlonger.push_back(dpair[i].first);
+        dsmaller.push_back(dpair[i].second);
+    }
+    if(!vsmaller.empty()) // Insert first vsmaller at the beginning
+    {
+        vlonger.insert(vlonger.begin(), vsmaller[0]);
+        dlonger.insert(dlonger.begin(), dsmaller[0]);
+    }
+}
+
+void PmergeMe::binaryInsert(std::vector<int> &vsmaller, std::vector<int> &vlonger, std::deque<int> &dsmaller, std::deque<int> &dlonger, int start)
+{
+    for (size_t i = start; i < vsmaller.size(); i++)
+    {
+        std::vector<int>::iterator it = std::lower_bound(vlonger.begin(), vlonger.end(), vsmaller[i]);
+        vlonger.insert(it, vsmaller[i]);
+        std::deque<int>::iterator dit = std::lower_bound(dlonger.begin(), dlonger.end(), dsmaller[i]);
+        dlonger.insert(dit, dsmaller[i]);
+    }
+    
+    if(this->getHasLeftover())
+    {
+
+        std::vector<int>::iterator it = std::lower_bound(vlonger.begin(), vlonger.end(), vsmaller.back());
+        vlonger.insert(it, vsmaller.back());
+        std::deque<int>::iterator dit = std::lower_bound(dlonger.begin(), dlonger.end(), dsmaller.back());
+        dlonger.insert(dit, dsmaller.back());
+    }
+}
