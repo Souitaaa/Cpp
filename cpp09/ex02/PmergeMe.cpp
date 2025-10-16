@@ -18,6 +18,10 @@ int PmergeMe::getHasLeftover() const
 {
     return this->_hasLeftover;
 }
+int PmergeMe::getLeftover() const
+{
+    return this->leftover;
+}
 
 void PmergeMe::mergeSort(std::vector<std::pair<int, int> >& array)
 {
@@ -125,15 +129,14 @@ int PmergeMe::chekArgs(int ac, char *av[], std::vector<int> &v, std::deque<int> 
     return 0;
 }
 
-void PmergeMe::checkLeftover(std::vector<int> &v, std::deque<int> &d,int &vleftover, int &dleftover)
+void PmergeMe::checkLeftover(std::vector<int> &v, std::deque<int> &d)
 {
     PmergeMe p;
     if (v.size() % 2 != 0)
     {
         this->setHasLeftover(1);
-        vleftover = v.back();
-        v.pop_back();  
-        dleftover = d.back();
+        this->leftover = v.back();
+        v.pop_back();
         d.pop_back();
     }
 }
@@ -196,8 +199,8 @@ void PmergeMe::binaryInsert(std::vector<int> &vsmaller, std::vector<int> &vlonge
     {
 
         std::vector<int>::iterator it = std::lower_bound(vlonger.begin(), vlonger.end(), vsmaller.back());
-        vlonger.insert(it, vsmaller.back());
+        vlonger.insert(it, vleftover.back());
         std::deque<int>::iterator dit = std::lower_bound(dlonger.begin(), dlonger.end(), dsmaller.back());
-        dlonger.insert(dit, dsmaller.back());
+        dlonger.insert(dit, dleftover.back());
     }
 }

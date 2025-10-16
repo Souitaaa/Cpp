@@ -29,8 +29,6 @@ std::vector<int> Jacobsthal(size_t n)
 
 int main(int ac, char *av[])
 {
-    int vleftover = 0;
-    int dleftover = 0;
     std::vector<int> v;
     std::deque<int> d;
     std::vector<int> vlonger;
@@ -44,7 +42,8 @@ int main(int ac, char *av[])
     if(p.chekArgs(ac, av, v, d))
         return 1;
     
-    p.checkLeftover(v, d, vleftover, dleftover);
+    // 
+    p.checkLeftover(v, d);
     p.fillAndSortPairs(v, d, vpair, dpair);
     p.mergeSort(vpair);
     p.mergeSort(dpair);
@@ -95,7 +94,7 @@ int main(int ac, char *av[])
     }
     std::cout << std::endl;
     if(p.getHasLeftover())
-        std::cout << "Leftover element: " << vleftover << std::endl;
-    
+        std::cout << "Leftover element: " << p.getLeftover() << std::endl;
+
     return 0;
 }
