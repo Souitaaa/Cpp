@@ -24,7 +24,7 @@ class bitcoin
         void parseFile(std::string input);
         int dateAndValue(std::string line);
         int isDateValid(std::string date);
-        float extractValues();
+        int Countchar(std::string str, char c);
         void printMap();
 };
 #endif 

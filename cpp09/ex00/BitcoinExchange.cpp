@@ -22,6 +22,17 @@ bitcoin::~bitcoin()
 {
 }
 
+int bitcoin::Countchar(std::string str, char c)
+{
+    int count = 0;
+    for (size_t i = 0; i < str.length(); i++)
+    {
+        if (str[i] == c)
+            count++;
+    }
+    return count;
+}
+
 void bitcoin::parseFile(std::string input)
 {
     std::ifstream file(input.c_str());
@@ -39,7 +50,11 @@ void bitcoin::parseFile(std::string input)
     }
     while(std::getline(file, line))
     {
-        if(dateAndValue(line))
+        if (Countchar(line, '|') != 1)
+        {
+            std::cerr << "Error: bad input => " << line << std::endl;
+        }
+        else if(dateAndValue(line))
             return;
     }
     file.close();

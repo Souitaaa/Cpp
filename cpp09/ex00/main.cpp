@@ -4,7 +4,6 @@ int main(int ac, char **av)
 {
     try
     {
-        // bitcoin::Data data;
         if (ac != 2)
         {
             std::cerr << "Error: could not open file." << std::endl;
@@ -12,8 +11,6 @@ int main(int ac, char **av)
         }
         bitcoin btc;
         btc.parseFile(av[1]);
-        // btc.printMap();
-        // std::cout << data.date << std::endl;
         return 0;
     }
     catch(const std::exception &e)
