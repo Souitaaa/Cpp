@@ -33,6 +33,15 @@ int bitcoin::Countchar(std::string str, char c)
     return count;
 }
 
+int bitcoin::Countargs(std::string str)
+{
+    int count = 0;
+    std::istringstream iss(str);
+    std::string word;
+    while (iss >> word)
+        count++;
+    return count;
+}
 void bitcoin::parseFile(std::string input)
 {
     std::ifstream file(input.c_str());
@@ -105,7 +114,14 @@ int bitcoin::dateAndValue(std::string line)
         if(flag != 1)
         {
             std::string value = line.substr(pos + 2,  line.length());
-            data.value = atof(value.c_str());
+            std::stringstream ss(value);
+            float f;
+            if (!(ss >> f) || !(ss.eof()))
+            {
+                std::cerr << "Error: bad input => " << value << std::endl;
+                flag = 1;
+            }
+            data.value = f;
             if(data.value < 0)
             {
                 std::cerr << "Error: not a positive number." << std::endl;
