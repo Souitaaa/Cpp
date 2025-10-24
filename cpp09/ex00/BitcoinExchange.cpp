@@ -135,7 +135,7 @@ int bitcoin::dateAndValue(std::string line)
             if(flag != 1)
             {
                 std::map<std::string, float>::iterator it = input.lower_bound(data.date);
-                if (it == input.end() || (it != input.begin() && it->first != data.date))
+                if (it == input.end() || (it != input.begin() && it->first != data.date)) //TODO 7ta nrja3 nchufha
                     --it;
                 float result = data.value * it->second;
                 std::cout << data.date << " => " << data.value << " = " << result << std::endl;
