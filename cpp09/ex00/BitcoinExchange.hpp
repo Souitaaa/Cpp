@@ -8,6 +8,8 @@
 #include <stdexcept>
 #include <string>
 #include <cstdlib>
+#include <cctype> 
+
 
 class bitcoin
 {
@@ -27,5 +29,7 @@ class bitcoin
         int Countchar(std::string str, char c);
         int Countargs(std::string str);
         void printMap();
+        std::string trim(const std::string& str);
+
 };
 #endif 

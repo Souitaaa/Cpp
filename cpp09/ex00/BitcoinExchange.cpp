@@ -22,6 +22,17 @@ bitcoin::~bitcoin()
 {
 }
 
+std::string bitcoin::trim(const std::string& str)
+{
+    size_t first = 0;
+    size_t last = str.size();
+    while (first < str.size() && std::isspace(static_cast<unsigned char>(str[first])))
+        ++first;
+    while (last > first && std::isspace(static_cast<unsigned char>(str[last - 1])))
+        --last;
+    return str.substr(first, last - first);
+}
+
 int bitcoin::Countchar(std::string str, char c)
 {
     int count = 0;
@@ -45,16 +56,20 @@ int bitcoin::Countargs(std::string str)
 void bitcoin::parseFile(std::string input)
 {
     std::ifstream file(input.c_str());
+    std::string line;
     if(!file.is_open())
     {
-        std::cerr << "Error: could not open file " << input ;
+        std::cerr << "Error: could not open file " << input << std::endl;
         return;
     }
-    std::string line ;
-    getline(file, line);
-    if(line != "date | value")
+    if(!getline(file, line))
     {
-        std::cerr << "Error: bad input => " << line << std::endl;
+        std::cerr << "Error: file is empty" << std::endl;
+        return;
+    }
+    if(trim(line) != "date | value")
+    {
+        std::cerr << "Missing date | value" << std::endl;
         return;
     }
     while(std::getline(file, line))
@@ -74,9 +89,9 @@ int bitcoin::isDateValid(std::string date)
     size_t pos = date.find('-');
     if (pos == std::string::npos)
         flag = 1;
-    std::string year = date.substr(0, pos);
-    std::string month = date.substr(pos + 1, 2);
-    std::string day = date.substr(pos + 4, 2);
+    std::string year = trim(date.substr(0, pos));
+    std::string month = trim(date.substr(pos + 1, 2));
+    std::string day = trim(date.substr(pos + 4, 2));
     if (year.length() != 4 || month.length() != 2 || day.length() != 2)
     {
         std::cerr << "Error: bad input => " << date << std::endl;
