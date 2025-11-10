@@ -1,12 +1,15 @@
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(): _hasLeftover(0) {}
+PmergeMe::PmergeMe(): _hasLeftover(0), leftover(0) {}
 PmergeMe::~PmergeMe() {}
 PmergeMe::PmergeMe(const PmergeMe &other) { *this = other; }
 PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 {
     if (this != &other)
+    {
         this->_hasLeftover = other._hasLeftover;
+        this->leftover = other.leftover;
+    }
     return *this;
 }
 void PmergeMe::setHasLeftover(int hasLeftover)
@@ -97,15 +100,15 @@ void PmergeMe::merge(std::deque<std::pair<int, int> >& leftarray,
 
 int PmergeMe::chekArgs(int ac, char *av[], std::vector<int> &v, std::deque<int> &d)
 {
-    long i ;
+    long i;
     char c;
     if(ac < 2)
     {
-        std::cout << "Error : entrer args" << std::endl;
+        std::cout << "Error" << std::endl;
         return 1;
     }
     
-    for(int j = 1; j < ac ; j++) // parsing args
+    for(int j = 1; j < ac; j++)
     {
         std::stringstream ss(av[j]);
         if (!(ss >> i))
@@ -115,7 +118,7 @@ int PmergeMe::chekArgs(int ac, char *av[], std::vector<int> &v, std::deque<int> 
         }
         if (ss >> c)
         {
-            std::cout << "still" << std::endl;
+            std::cout << "Error" << std::endl;
             return 1;
         }
         if(i < 0 || i > 2147483647)
@@ -131,7 +134,6 @@ int PmergeMe::chekArgs(int ac, char *av[], std::vector<int> &v, std::deque<int> 
 
 void PmergeMe::checkLeftover(std::vector<int> &v, std::deque<int> &d)
 {
-    PmergeMe p;
     if (v.size() % 2 != 0)
     {
         this->setHasLeftover(1);
@@ -143,12 +145,13 @@ void PmergeMe::checkLeftover(std::vector<int> &v, std::deque<int> &d)
 
 void PmergeMe::fillAndSortPairs(std::vector<int> &v, std::deque<int> &d, std::vector<std::pair<int, int> > &vpair, std::deque<std::pair<int, int> > &dpair)
 {
-    for(int i = 0 ; i < (int)v.size(); i += 2) // filling pair vectors and deques
+    for(int i = 0; i < (int)v.size(); i += 2)
     {
         vpair.push_back(std::make_pair(v[i], v[i + 1]));
         dpair.push_back(std::make_pair(d[i], d[i + 1]));
     }
-    for(int i = 0 ; i < (int)vpair.size(); i++) // sort each pair internally
+    
+    for(int i = 0; i < (int)vpair.size(); i++)
     {
         if(vpair[i].first < vpair[i].second)
         {
@@ -156,17 +159,12 @@ void PmergeMe::fillAndSortPairs(std::vector<int> &v, std::deque<int> &d, std::ve
         }
     }
     
-    for(int i = 0 ; i < (int)dpair.size(); i++) // sort each deque pair internally (biggest on the left)
+    for(int i = 0; i < (int)dpair.size(); i++)
     {
         if(dpair[i].first < dpair[i].second)
         {
             std::swap(dpair[i].first, dpair[i].second);
         }
-    }
-
-    for(int i = 0 ; i < (int)vpair.size(); i++) // print vector pairs
-    {
-        std::cout << "(" << vpair[i].first << ", " << vpair[i].second << ") ";
     }
 }
 
@@ -183,7 +181,8 @@ void PmergeMe::separatePairs(std::vector<std::pair<int, int> > &vpair, std::dequ
         dlonger.push_back(dpair[i].first);
         dsmaller.push_back(dpair[i].second);
     }
-    if(!vsmaller.empty()) // Insert first vsmaller at the beginning
+    
+    if(!vsmaller.empty())
     {
         vlonger.insert(vlonger.begin(), vsmaller[0]);
         dlonger.insert(dlonger.begin(), dsmaller[0]);
@@ -196,6 +195,10 @@ void PmergeMe::binaryInsert(std::vector<int> &vsmaller, std::vector<int> &vlonge
     {
         std::vector<int>::iterator it = std::lower_bound(vlonger.begin(), vlonger.end(), vsmaller[i]);
         vlonger.insert(it, vsmaller[i]);
+    }
+    
+    for (size_t i = start; i < dsmaller.size(); i++)
+    {
         std::deque<int>::iterator dit = std::lower_bound(dlonger.begin(), dlonger.end(), dsmaller[i]);
         dlonger.insert(dit, dsmaller[i]);
     }

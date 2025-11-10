@@ -6,7 +6,8 @@
 #include <string>
 #include <utility>
 #include <algorithm>
-
+#include <ctime>
+#include <iomanip>
 
 std::vector<int> Jacobsthal(size_t n)
 {
@@ -27,6 +28,21 @@ std::vector<int> Jacobsthal(size_t n)
     return js;
 }
 
+void printSequence(const std::vector<int>& v, bool showAll)
+{
+    size_t limit = showAll ? v.size() : std::min(v.size(), size_t(5));
+    
+    for (size_t i = 0; i < limit; i++)
+    {
+        std::cout << v[i];
+        if (i < limit - 1)
+            std::cout << " ";
+    }
+    
+    if (!showAll && v.size() > 5)
+        std::cout << " [...]";
+}
+
 int main(int ac, char *av[])
 {
     std::vector<int> v;
@@ -42,17 +58,25 @@ int main(int ac, char *av[])
     if(p.chekArgs(ac, av, v, d))
         return 1;
     
-    // 
+    // Print "Before" sequence
+    std::cout << "Before: ";
+    printSequence(v, v.size() <= 5);
+    std::cout << std::endl;
+    
+    // Store original size for timing output
+    size_t originalSize = v.size();
+    
+    // Start timing for vector
+    clock_t startVector = clock();
+    
     p.checkLeftover(v, d);
     p.fillAndSortPairs(v, d, vpair, dpair);
     p.mergeSort(vpair);
-    p.mergeSort(dpair);
     p.separatePairs(vpair, dpair, vlonger, vsmaller, dlonger, dsmaller);
 
-    std::vector<int> js = Jacobsthal(vsmaller.size()); // Generate Jacobsthal sequence
+    std::vector<int> js = Jacobsthal(vsmaller.size());
     
-    
-    if(js.size() > 2) // Remove 0 and 1
+    if(js.size() > 2)
     {
         if(js.size() > 0 && js[0] == 0)
             js.erase(js.begin());
@@ -61,9 +85,9 @@ int main(int ac, char *av[])
     }
     
     int start = 0;
-    int end = 1; // Start from 1 because we already inserted vsmaller[0]
+    int end = 1;
     
-    for (size_t i = 0; i < js.size(); i++) // Insert remaining vsmaller using Jacobsthal sequence
+    for (size_t i = 0; i < js.size(); i++)
     {
         start = js[i];
         for (; start > end; start--)
@@ -73,28 +97,53 @@ int main(int ac, char *av[])
             {
                 std::vector<int>::iterator it = std::lower_bound(vlonger.begin(), vlonger.end(), vsmaller[idx]);
                 vlonger.insert(it, vsmaller[idx]);
+            }
+        }
+        end = js[i];
+    }
+
+    p.binaryInsert(vsmaller, vlonger, dsmaller, dlonger, end);
+    
+    // End timing for vector
+    clock_t endVector = clock();
+    double vectorTime = (double)(endVector - startVector) / CLOCKS_PER_SEC * 1000000;
+    
+    // Start timing for deque
+    clock_t startDeque = clock();
+    
+    // Reset for deque sorting
+    p.mergeSort(dpair);
+    
+    for (size_t i = 0; i < js.size(); i++)
+    {
+        start = js[i];
+        for (; start > end; start--)
+        {
+            int idx = start - 1;
+            if (idx >= 0 && static_cast<size_t>(idx) < dsmaller.size())
+            {
                 std::deque<int>::iterator dit = std::lower_bound(dlonger.begin(), dlonger.end(), dsmaller[idx]);
                 dlonger.insert(dit, dsmaller[idx]);
             }
         }
         end = js[i];
     }
-
-    p.binaryInsert(vsmaller, vlonger, dsmaller, dlonger, end);    
-    std::cout << "\n\nFinal sorted sequence: ";
-    for(int i = 0; i < (int)vlonger.size(); i++)
-    {
-        std::cout << vlonger[i] << " ";
-    }
-
-    std::cout << "\n\nFinal sorted sequence: ";
-    for(int i = 0; i < (int)dlonger.size(); i++)
-    {
-        std::cout << dlonger[i] << " ";
-    }
+    
+    // End timing for deque
+    clock_t endDeque = clock();
+    double dequeTime = (double)(endDeque - startDeque) / CLOCKS_PER_SEC * 1000000;
+    
+    // Print "After" sequence
+    std::cout << "After: ";
+    printSequence(vlonger, vlonger.size() <= 5);
     std::cout << std::endl;
-    if(p.getHasLeftover())
-        std::cout << "Leftover element: " << p.getLeftover() << std::endl;
+    
+    // Print timing information
+    std::cout << std::fixed << std::setprecision(5);
+    std::cout << "Time to process a range of " << originalSize 
+              << " elements with std::vector : " << vectorTime << " us" << std::endl;
+    std::cout << "Time to process a range of " << originalSize 
+              << " elements with std::deque : " << dequeTime << " us" << std::endl;
 
     return 0;
 }

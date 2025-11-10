@@ -9,7 +9,7 @@ RPN &RPN::operator=(const RPN &src) {
     return *this;
 }
 RPN::RPN(std::string str) {
-    for (size_t i = 0; i < str.length(); i++) 
+    for (size_t i = 0; i < str.length(); i++)   
     {
         if (str[i] == ' ')
             continue;
@@ -48,7 +48,9 @@ RPN::RPN(std::string str) {
         else
             throw std::runtime_error("Error: Invalid character");
     }
-    if (numbers.size() != 1)
+    if (numbers.size() != 1){
+        std::cout << "size = " << numbers.size() << std::endl;
         throw std::runtime_error("Error: Invalid RPN expression");
+    }
     std::cout << numbers.top() << std::endl;
 }
