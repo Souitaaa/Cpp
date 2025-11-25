@@ -161,11 +161,3 @@ int bitcoin::dateAndValue(std::string line)
     return 0;
 }
 
-void bitcoin::printMap()
-{
-	std::map<std::string, float>::const_iterator it;
-	for (it = input.begin(); it != input.end(); ++it)
-	{
-		std::cout << it->first << " => " << it->second << std::endl;
-	}
-}

@@ -3,12 +3,14 @@
 RPN::RPN() {}
 RPN::~RPN() {}
 RPN::RPN(const RPN &src) { *this = src; }
-RPN &RPN::operator=(const RPN &src) {
+RPN &RPN::operator=(const RPN &src) 
+{
     if (this != &src)
         this->numbers = src.numbers;
     return *this;
 }
-RPN::RPN(std::string str) {
+RPN::RPN(std::string str) 
+{
     for (size_t i = 0; i < str.length(); i++)   
     {
         if (str[i] == ' ')

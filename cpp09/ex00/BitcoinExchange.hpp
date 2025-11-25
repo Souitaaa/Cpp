@@ -28,7 +28,6 @@ class bitcoin
         int isDateValid(std::string date);
         int Countchar(std::string str, char c);
         int Countargs(std::string str);
-        void printMap();
         std::string trim(const std::string& str);
 
 };

@@ -25,7 +25,7 @@ std::vector<int> Jacobsthal(size_t n)
             break;
         js.push_back(next);
     }
-    return js;
+    return js;  // TODO 
 }
 
 void printSequence(const std::vector<int>& v, bool showAll)
@@ -58,30 +58,27 @@ int main(int ac, char *av[])
     if(p.chekArgs(ac, av, v, d))
         return 1;
     
-    // Print "Before" sequence
     std::cout << "Before: ";
     printSequence(v, v.size() <= 5);
     std::cout << std::endl;
     
-    // Store original size for timing output
     size_t originalSize = v.size();
-    
-    // Start timing for vector
     clock_t startVector = clock();
+    
     
     p.checkLeftover(v, d);
     p.fillAndSortPairs(v, d, vpair, dpair);
     p.mergeSort(vpair);
     p.separatePairs(vpair, dpair, vlonger, vsmaller, dlonger, dsmaller);
-
+    
     std::vector<int> js = Jacobsthal(vsmaller.size());
     
     if(js.size() > 2)
     {
         if(js.size() > 0 && js[0] == 0)
-            js.erase(js.begin());
+        js.erase(js.begin());
         if(js.size() > 0 && js[0] == 1)
-            js.erase(js.begin());
+        js.erase(js.begin());
     }
     
     int start = 0;
@@ -101,17 +98,14 @@ int main(int ac, char *av[])
         }
         end = js[i];
     }
-
+    
     p.binaryInsert(vsmaller, vlonger, dsmaller, dlonger, end);
     
-    // End timing for vector
     clock_t endVector = clock();
     double vectorTime = (double)(endVector - startVector) / CLOCKS_PER_SEC * 1000000;
     
-    // Start timing for deque
     clock_t startDeque = clock();
     
-    // Reset for deque sorting
     p.mergeSort(dpair);
     
     for (size_t i = 0; i < js.size(); i++)
@@ -129,16 +123,13 @@ int main(int ac, char *av[])
         end = js[i];
     }
     
-    // End timing for deque
     clock_t endDeque = clock();
     double dequeTime = (double)(endDeque - startDeque) / CLOCKS_PER_SEC * 1000000;
     
-    // Print "After" sequence
     std::cout << "After: ";
     printSequence(vlonger, vlonger.size() <= 5);
     std::cout << std::endl;
     
-    // Print timing information
     std::cout << std::fixed << std::setprecision(5);
     std::cout << "Time to process a range of " << originalSize 
               << " elements with std::vector : " << vectorTime << " us" << std::endl;
