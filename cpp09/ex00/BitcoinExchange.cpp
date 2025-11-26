@@ -83,37 +83,73 @@ void bitcoin::parseFile(std::string input)
     }
     file.close();
 }
+
 int bitcoin::isDateValid(std::string date)
 {
     int flag = 0;
     size_t pos = date.find('-');
     if (pos == std::string::npos)
         flag = 1;
-    std::string year = trim(date.substr(0, pos));
-    std::string month = trim(date.substr(pos + 1, 2));
-    std::string day = trim(date.substr(pos + 4, 2));
-    if (year.length() != 4 || month.length() != 2 || day.length() != 2)
+    std::string yearStr  = trim(date.substr(0, pos));
+    std::string monthStr = trim(date.substr(pos + 1, 2));
+    std::string dayStr   = trim(date.substr(pos + 4, 2));
+    int year  = atoi(yearStr.c_str());
+    int month = atoi(monthStr.c_str());
+    int day   = atoi(dayStr.c_str());
+    if (yearStr.length() != 4 || monthStr.length() != 2 || dayStr.length() != 2)
     {
         std::cerr << "Error: bad input => " << date << std::endl;
         flag = 1;
     }
-    else if(atof(year.c_str()) < 2009 || atof(year.c_str()) > 2022)
+
+    else if (year < 2009 || year > 2022)
     {
         std::cerr << "Error: bad input => " << date << std::endl;
         flag = 1;
     }
-    else if(atof(month.c_str()) < 1 || atof(month.c_str()) > 12)
+    else if (month < 1 || month > 12)
     {
         std::cerr << "Error: bad input => " << date << std::endl;
         flag = 1;
     }
-    else if(atof(day.c_str()) < 1 || atof(day.c_str()) > 31)
+    else if (day < 1 || day > 31)
     {
         std::cerr << "Error: bad input => " << date << std::endl;
         flag = 1;
     }
-    return flag;
+    bool isLeap = false;
+    if ( (year % 4 == 0 && year % 100 != 0) ||
+         (year % 400 == 0) )
+    {
+        isLeap = true;
+    }
+    int daysInMonth;
+    switch (month)
+    {
+        case 1: case 3: case 5: case 7:
+        case 8: case 10: case 12:
+            daysInMonth = 31;
+            break;
+
+        case 4: case 6: case 9: case 11:
+            daysInMonth = 30;
+            break;
+
+        case 2:
+            daysInMonth = isLeap ? 29 : 28;
+            break;
+
+        default:
+            daysInMonth = 31;
+    }
+    if (day > daysInMonth)
+    {
+        std::cerr << "Error: bad input => " << date << std::endl;
+        return 1;
+    }
+    return 0;
 }
+
 int bitcoin::dateAndValue(std::string line)
 {
     bitcoin::Data data;

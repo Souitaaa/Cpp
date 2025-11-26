@@ -29,6 +29,6 @@ class bitcoin
         int Countchar(std::string str, char c);
         int Countargs(std::string str);
         std::string trim(const std::string& str);
-
+        bool isLeapYear(int year);
 };
 #endif 

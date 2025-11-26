@@ -25,7 +25,7 @@ std::vector<int> Jacobsthal(size_t n)
             break;
         js.push_back(next);
     }
-    return js;  // TODO 
+    return js;
 }
 
 void printSequence(const std::vector<int>& v, bool showAll)
@@ -66,10 +66,10 @@ int main(int ac, char *av[])
     clock_t startVector = clock();
     
     
-    p.checkLeftover(v, d);
-    p.fillAndSortPairs(v, d, vpair, dpair);
+    p.checkVectorLeftover(v);
+    p.fillAndSortVectorsPairs(v, vpair);
     p.mergeSort(vpair);
-    p.separatePairs(vpair, dpair, vlonger, vsmaller, dlonger, dsmaller);
+    p.separateVectorsPairs(vpair ,vlonger, vsmaller);
     
     std::vector<int> js = Jacobsthal(vsmaller.size());
     
@@ -99,15 +99,17 @@ int main(int ac, char *av[])
         end = js[i];
     }
     
-    p.binaryInsert(vsmaller, vlonger, dsmaller, dlonger, end);
+    p.binaryVectorsInsert(vsmaller, vlonger, end);
     
     clock_t endVector = clock();
     double vectorTime = (double)(endVector - startVector) / CLOCKS_PER_SEC * 1000000;
     
     clock_t startDeque = clock();
-    
+    p.checkDequeLeftover(d);
+    p.fillAndSortDequePairs(d, dpair);
     p.mergeSort(dpair);
-    
+    p.separateDequePairs(dpair ,dlonger, dsmaller);
+
     for (size_t i = 0; i < js.size(); i++)
     {
         start = js[i];
@@ -122,7 +124,8 @@ int main(int ac, char *av[])
         }
         end = js[i];
     }
-    
+
+    p.binaryDequeInsert(dsmaller, dlonger, end);
     clock_t endDeque = clock();
     double dequeTime = (double)(endDeque - startDeque) / CLOCKS_PER_SEC * 1000000;
     
